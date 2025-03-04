@@ -86,7 +86,7 @@ function renderCompanies(companyList) {
 						<figure>od <span>${element.years}</span> rokov</figure>
 					</div>
 					<div class="companies__card-item companies__card-link">
-						<a target="_blank" href="${element.siteLink}" class="btn">Детальніше</a>
+						<a target="_blank" href="${element.siteLink}" class="btn">Viac &#8594;</a>
 					</div>
 				</div>
         `;

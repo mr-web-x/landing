@@ -8,6 +8,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  background: #edfffc;
 }
 
 body.active-modal {
@@ -472,6 +473,7 @@ footer * {
   height: 340px;
   object-fit: cover;
   z-index: -1;
+  filter: brightness(45%);
 }
 .blog-card-bottom {
   display: flex;
