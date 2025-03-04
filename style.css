@@ -497,3 +497,7 @@ footer * {
 .freeprivacypolicy-com---pc-dialog .cc-cp-foot-save {
   background: #045c68 !important;
 }
+
+.cookies-open-btn {
+  cursor: pointer;
+}
