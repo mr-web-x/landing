@@ -487,3 +487,13 @@ footer * {
     font-size: 24px !important;
   }
 }
+
+.freeprivacypolicy-com---nb-headline {
+  position: fixed;
+}
+
+.freeprivacypolicy-com---nb-headline .cc-nb-okagree,
+.freeprivacypolicy-com---nb-headline .cc-nb-reject,
+.freeprivacypolicy-com---pc-dialog .cc-cp-foot-save {
+  background: #045c68 !important;
+}
