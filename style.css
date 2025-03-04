@@ -489,7 +489,7 @@ footer * {
 }
 
 .freeprivacypolicy-com---nb-headline {
-  position: fixed;
+  position: fixed !important;
 }
 
 .freeprivacypolicy-com---nb-headline .cc-nb-okagree,
