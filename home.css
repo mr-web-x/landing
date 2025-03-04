@@ -1,0 +1,271 @@
+.hero {
+  background: url("/assets/images/hero1.png") 0 0 / cover no-repeat;
+  margin: 0;
+}
+
+.hero__wrapper {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.hero__wrapper h1 {
+  font-size: 44px;
+  color: white;
+}
+
+.hero__wrapper p {
+  margin: 20px 0;
+  font-size: 18px;
+  color: white;
+}
+
+.hero__wrapper .btn {
+  width: fit-content;
+}
+
+/* .companies__list */
+.companies h2 {
+  font-size: 32px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.companies form {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-element option:first-child {
+  color: gray;
+  display: none;
+}
+
+.form-element label {
+  font-size: 12px;
+}
+
+.form-element select {
+  padding: 0px 8px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.companies__filter {
+  margin-bottom: 40px;
+}
+
+.companies__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.companies__card-item span {
+  color: #898989;
+  font-size: 18px;
+}
+
+.companies__card-item figure {
+  color: black;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.companies__card-item figure span {
+  color: black;
+  font-size: 24px;
+}
+
+.companies__card-item img {
+  object-fit: contain;
+  background: white;
+}
+
+.companies__list .companies__card {
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 1px 1px 4px gray;
+}
+
+.companies-filter-reset {
+  background: none;
+  color: black;
+  text-decoration: underline;
+  display: none;
+  border: none;
+  cursor: pointer;
+  height: 44px;
+}
+
+@media all and (max-width: 1024px) {
+  .companies__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .companies__card {
+    flex-direction: column;
+    max-width: calc(50% - 5px);
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .companies__card-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .companies__card-info {
+    width: 100%;
+  }
+
+  .companies__card-info span {
+    display: block;
+    width: 50%;
+    font-size: 16px;
+  }
+
+  .companies__card-item figure {
+    margin-top: 0;
+    text-align: right;
+    width: calc(50% - 10px);
+  }
+  .companies__card-item figure span {
+    display: inline;
+  }
+  .companies__card-item figure span {
+    font-size: 18px;
+  }
+  .companies__card-logo {
+    margin-bottom: 20px;
+  }
+  .companies__card-link {
+    margin-top: 20px;
+  }
+}
+
+@media all and (max-width: 720px) {
+  .companies__card {
+    flex-direction: column;
+    max-width: calc(100%);
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .companies form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .companies h2 {
+    font-size: 24px;
+  }
+  .form-element {
+    width: 100%;
+  }
+  .form-element select {
+    width: 100%;
+  }
+  .companies form .btn {
+    margin: 0 auto;
+  }
+}
+
+.about__wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about__wrapper img {
+  width: 100%;
+}
+
+.about__card {
+  max-width: 550px;
+  width: 100%;
+}
+
+.about__wrapper h2 {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.about__wrapper p {
+  margin: 6px 0;
+}
+
+.about__wrapper h3 {
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
+
+.about__wrapper ol,
+.about__wrapper ul {
+  padding-left: 20px;
+}
+
+.about__card-mobile {
+  display: none;
+}
+
+@media all and (max-width: 720px) {
+  .about__card-mobile {
+    display: block;
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px gray;
+  }
+  .about__card-pc {
+    display: none;
+  }
+}
+
+.policy__wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: red;
+}
+
+.policy__details {
+  padding: 10px;
+}
+.policy__details p {
+  margin: 6px 0;
+  line-height: 20px;
+}
+
+.policy summary {
+  background: #049ca1;
+  padding: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.policy__date {
+  margin-top: 20px;
+}
+
+.footer__bottom {
+  padding: 30px 0 0 0;
+  display: flex;
+}
