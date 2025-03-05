@@ -65,6 +65,12 @@
 .article-content p {
   margin: 6px 0;
 }
+.special-link {
+  text-decoration: underline;
+}
+.special-link:hover {
+  color: blue;
+}
 
 @media all and (max-width: 720px) {
   .article-hero__title {

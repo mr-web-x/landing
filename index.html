@@ -121,8 +121,8 @@
         <div class="container">
           <div class="hero__wrapper">
             <h1>
-              Spoločnosti, ktoré poskytujú <br />
-              mini úvery na Slovensku
+              Spoločnosti poskytujúce <br />
+              financovanie a úvery na Slovensku
             </h1>
             <p>
               Vyberte si spoločnosť, ktorá vám najviac vyhovuje. <br />
@@ -131,6 +131,40 @@
             </p>
             <a href="/#list" class="btn">Nájsť spoločnosť</a>
           </div>
+        </div>
+      </section>
+
+      <section id="list" class="companies">
+        <div class="container">
+          <h2>Spoločnosti poskytujúce financovanie a úvery na Slovensku.</h2>
+          <div class="companies__filter">
+            <form>
+              <div class="form-element">
+                <label for="slct-eur">Suma pôžičky, €</label>
+                <select required id="slct-eur">
+                  <option value="" selected disabled>Suma pôžičky</option>
+                  <option value="do500">do 500</option>
+                  <option value="od500do5000">500 - 5000</option>
+                  <option value="od5000">od 5000</option>
+                </select>
+              </div>
+              <div class="form-element">
+                <label for="slct-days">Doba pôžičky, mesiacov</label>
+                <select required id="slct-days">
+                  <option value="" selected disabled>Doba pôžičky</option>
+                  <option value="do1month">do 1</option>
+                  <option value="od1monthdo12month">1 - 12</option>
+                  <option value="od12month">od 12</option>
+                </select>
+              </div>
+              <button type="submit" class="btn">Vybrať pôžičky</button>
+              <button type="button" class="companies-filter-reset">
+                Resetovať filter
+              </button>
+            </form>
+          </div>
+
+          <div class="companies__list"></div>
         </div>
       </section>
 
@@ -260,44 +294,113 @@
                     </div>
                   </a>
                 </div>
+
+                <!-- <div class="swiper-slide">
+                  <a href="/blog" class="blog-card">
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3></h3>
+                    <p>                   
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div> -->
+
+                <div class="swiper-slide">
+                  <a href="/blog/splatky-vs-uver.html" class="blog-card">
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3>
+                      Splátky vs. úver: čo je výhodnejšie? | Finančný Sprievodca
+                    </h3>
+                    <p>
+                      Pri k&uacute;pe veľkej položky, či už ide o spotrebič,
+                      auto alebo nehnuteľnosť, si mnoh&iacute; klad&uacute;
+                      ot&aacute;zku: zobrať si &uacute;ver alebo využiť
+                      spl&aacute;tky? Obe možnosti maj&uacute; svoje
+                      v&yacute;hody aj nev&yacute;hody. Pozrime sa na ne
+                      podrobnej&scaron;ie.
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="/blog/podnikatelske-uvery-na-slovensku.html"
+                    class="blog-card"
+                  >
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3>Podnikateľské úvery na Slovensku: aké sú možnosti?</h3>
+                    <p>
+                      Zistite, aké sú možnosti podnikateľských úverov na
+                      Slovensku. Prehľad štátnych programov, komerčných
+                      bankových úverov a alternatívnych foriem financovania.
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="/blog/ako-vyhodne-refinancovat-uver-a-znizit-uroky.html"
+                    class="blog-card"
+                  >
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3>Ako výhodne refinancovať úver a znížiť úroky?</h3>
+                    <p>
+                      Zistite, ako výhodne refinancovať úver a znížiť úrokovú
+                      sadzbu. Porovnajte ponuky bánk, zlúčte úvery a
+                      optimalizujte svoje splátky.
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="/blog/ako-rychlo-ziskat-peniaze-na-uver-bez-zbytocnych-dokladov.html"
+                    class="blog-card"
+                  >
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3>
+                      Ako rýchlo získať peniaze na úver bez zbytočných dokladov?
+                    </h3>
+                    <p>
+                      Zistite, ako rýchlo získať peniaze bez zbytočných dokladov
+                      na Slovensku. Porovnávame mikropôžičky, kreditné karty,
+                      súkromných investorov, pôžičky so zálohou a povolené
+                      prečerpanie.
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div>
+                <div class="swiper-slide">
+                  <a
+                    href="/blog/ako-bezpecne-brat-online-pozicky-na-slovensku.html"
+                    class="blog-card"
+                  >
+                    <img src="/assets/blog/b1.jpeg" alt="articles" />
+                    <h3>Ako bezpečne brať online pôžičky na Slovensku?</h3>
+                    <p>
+                      Zistite, ako bezpečne brať online pôžičky na Slovensku.
+                      Naučte sa vyhnúť podvodníkom, overiť licenciu
+                      poskytovateľa a chrániť svoje osobné údaje.
+                    </p>
+                    <div class="blog-card-bottom">
+                      <span>Podrobnosti →</span>
+                    </div>
+                  </a>
+                </div>
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="list" class="companies">
-        <div class="container">
-          <h2>Spoločnosti, ktoré poskytujú mini úvery na Slovensku</h2>
-          <div class="companies__filter">
-            <form>
-              <div class="form-element">
-                <label for="slct-eur">Suma pôžičky, €</label>
-                <select required id="slct-eur">
-                  <option value="" selected disabled>Suma pôžičky</option>
-                  <option value="do500">do 500</option>
-                  <option value="od500do5000">500 - 5000</option>
-                  <option value="od5000">od 5000</option>
-                </select>
-              </div>
-              <div class="form-element">
-                <label for="slct-days">Doba pôžičky, mesiacov</label>
-                <select required id="slct-days">
-                  <option value="" selected disabled>Doba pôžičky</option>
-                  <option value="do1month">do 1</option>
-                  <option value="od1monthdo12month">1 - 12</option>
-                  <option value="od12month">od 12</option>
-                </select>
-              </div>
-              <button type="submit" class="btn">Vybrať pôžičky</button>
-              <button type="button" class="companies-filter-reset">
-                Resetovať filter
-              </button>
-            </form>
-          </div>
-
-          <div class="companies__list"></div>
         </div>
       </section>
 
@@ -564,7 +667,7 @@
         spaceBetween: 10,
         pagination: {
           el: ".swiper-pagination",
-          clickable: true,
+          dynamicBullets: true,
         },
         breakpoints: {
           720: {
