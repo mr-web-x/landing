@@ -284,15 +284,21 @@
 }
 
 .blogSwiper .swiper-button-prev::after {
-  content: "⮜";
-  color: #049ca1;
-  font-size: 20px;
+  content: "";
+  display: block;
+  width: 26px;
+  height: 22px;
+  background: url("/assets/icons/arrow-back.svg") center center / cover
+    no-repeat;
 }
 
 .blogSwiper .swiper-button-next::after {
-  content: "⮞";
-  color: #049ca1;
-  font-size: 20px;
+  content: "";
+  display: block;
+  width: 26px;
+  height: 22px;
+  background: url("/assets/icons/arrow-next.svg") center center / cover
+    no-repeat;
 }
 
 .blogSwiper .swiper-pagination-bullet-active {
