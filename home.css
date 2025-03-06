@@ -270,3 +270,31 @@
   padding: 30px 0 0 0;
   display: flex;
 }
+
+.blogSwiper .swiper-button-prev {
+  left: 30%;
+  bottom: -10px;
+  top: auto;
+}
+
+.blogSwiper .swiper-button-next {
+  right: 30%;
+  bottom: -10px;
+  top: auto;
+}
+
+.blogSwiper .swiper-button-prev::after {
+  content: "⮜";
+  color: #049ca1;
+  font-size: 20px;
+}
+
+.blogSwiper .swiper-button-next::after {
+  content: "⮞";
+  color: #049ca1;
+  font-size: 20px;
+}
+
+.blogSwiper .swiper-pagination-bullet-active {
+  background: #049ca1;
+}
