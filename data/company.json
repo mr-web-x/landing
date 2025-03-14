@@ -23,20 +23,20 @@
     "daysDo": "30",
     "years": "21",
     "summOd": "50",
-    "summDo": "500"
+    "summDo": "7000"
   },
   {
-    "id": "1",
-    "title": "fastcredit",
+    "id": "3",
+    "title": "Fini",
     "link": "/company2.html",
-    "siteLink": "https://company2.sk",
-    "logo": "/assets/companies/2.jpg",
-    "percent": "0.1",
+    "siteLink": "https://fini.sk",
+    "logo": "/assets/companies/fini.svg",
+    "percent": "0.12",
     "daysOd": "10",
     "daysDo": "30",
-    "years": "21",
-    "summOd": "50",
-    "summDo": "7000"
+    "years": "18",
+    "summOd": "100",
+    "summDo": "300"
   },
   {
     "id": "1",
