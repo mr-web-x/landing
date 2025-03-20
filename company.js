@@ -78,7 +78,7 @@ function renderCompanies(companyList) {
 						<figure>do <span>${element.daysDo}</span> dní</figure>
 					</div>
 					<div class="companies__card-item companies__card-info">
-						<span>Summ do</span>
+						<span>Summ</span>
 						<figure>do <span>${element.summDo}</span> €</figure>
 					</div>
 					<div class="companies__card-item companies__card-info">
