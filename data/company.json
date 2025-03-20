@@ -13,17 +13,17 @@
     "summDo": "500"
   },
   {
-    "id": "1",
-    "title": "fastcredit",
+    "id": "2",
+    "title": "Finzap",
     "link": "/company2.html",
-    "siteLink": "https://company2.sk",
-    "logo": "/assets/companies/2.jpg",
-    "percent": "0.1",
+    "siteLink": "https://finzap.sk",
+    "logo": "/assets/companies/finzap.png",
+    "percent": "0.09",
     "daysOd": "10",
     "daysDo": "30",
     "years": "21",
     "summOd": "50",
-    "summDo": "7000"
+    "summDo": "500"
   },
   {
     "id": "3",
