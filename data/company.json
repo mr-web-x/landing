@@ -1,19 +1,6 @@
 [
   {
     "id": "1",
-    "link": "/fastcredit.html",
-    "title": "fastcredit",
-    "siteLink": "https://fastcredit.sk",
-    "logo": "/assets/companies/fastcredit.svg",
-    "percent": "0.1",
-    "daysOd": "10",
-    "daysDo": "30",
-    "years": "21",
-    "summOd": "50",
-    "summDo": "500"
-  },
-  {
-    "id": "2",
     "title": "Fini",
     "link": "/company2.html",
     "siteLink": "https://fini.sk",
@@ -26,7 +13,7 @@
     "summDo": "300"
   },
   {
-    "id": "3",
+    "id": "2",
     "title": "Uveria",
     "link": "/company2.html",
     "siteLink": "https://uveria.sk",
@@ -39,20 +26,20 @@
     "summDo": "500"
   },
   {
-    "id": "4",
-    "title": "Lend",
-    "link": "/company2.html",
-    "siteLink": "https://lend.sk",
-    "logo": "/assets/companies/lend.jpg",
-    "percent": "0.05",
+    "id": "3",
+    "link": "/creditmarket.html",
+    "title": "Credit Market",
+    "siteLink": "https://creditmarket.sk",
+    "logo": "/assets/companies/creditmarket.png",
+    "percent": "0.1",
     "daysOd": "10",
-    "daysDo": "360",
-    "years": "18",
-    "summOd": "100",
-    "summDo": "10000"
+    "daysDo": "30",
+    "years": "21",
+    "summOd": "50",
+    "summDo": "500"
   },
   {
-    "id": "5",
+    "id": "4",
     "title": "Finzap",
     "link": "/company2.html",
     "siteLink": "https://finzap.sk",
@@ -63,5 +50,18 @@
     "years": "21",
     "summOd": "50",
     "summDo": "250"
+  },
+  {
+    "id": "5",
+    "title": "Lend",
+    "link": "/company2.html",
+    "siteLink": "https://lend.sk",
+    "logo": "/assets/companies/lend.jpg",
+    "percent": "0.05",
+    "daysOd": "10",
+    "daysDo": "360",
+    "years": "18",
+    "summOd": "100",
+    "summDo": "10000"
   }
 ]

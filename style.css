@@ -38,8 +38,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .logo img {
-  width: 36px;
-  height: 36px;
+  width: auto;
+  height: 58px;
 }
 
 html {
@@ -282,7 +282,7 @@ header li img {
 @media all and (max-width: 480px) {
   .logo,
   .logo img {
-    height: 32px;
+    height: 48px;
   }
 }
 
@@ -354,8 +354,18 @@ footer * {
 .footer__contacts {
   display: flex;
   gap: 30px;
-  padding-left: 46px;
+  margin-top: 10px;
   align-items: center;
+}
+
+footer .logo {
+  margin: 0 auto;
+  height: 64px;
+}
+
+footer .logo img {
+  height: 64px;
+  filter: invert(1) brightness(5);
 }
 
 @media all and (max-width: 768px) {
