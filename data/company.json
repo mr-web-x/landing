@@ -10,7 +10,8 @@
     "daysDo": "30",
     "years": "18",
     "summOd": "100",
-    "summDo": "300"
+    "summDo": "300",
+    "color": "#9873fe"
   },
   {
     "id": "2",
@@ -23,7 +24,8 @@
     "daysDo": "90",
     "years": "21",
     "summOd": "50",
-    "summDo": "500"
+    "summDo": "500",
+    "color": "#01ddef"
   },
   {
     "id": "3",
@@ -36,7 +38,8 @@
     "daysDo": "30",
     "years": "21",
     "summOd": "50",
-    "summDo": "500"
+    "summDo": "500",
+    "color": "#2f70ad"
   },
   {
     "id": "4",
@@ -49,7 +52,8 @@
     "daysDo": "30",
     "years": "21",
     "summOd": "50",
-    "summDo": "250"
+    "summDo": "250",
+    "color": "#1a1a1a"
   },
   {
     "id": "5",
@@ -62,6 +66,7 @@
     "daysDo": "360",
     "years": "18",
     "summOd": "100",
-    "summDo": "10000"
+    "summDo": "10000",
+    "color": "#054938"
   }
 ]
