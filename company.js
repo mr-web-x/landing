@@ -99,7 +99,7 @@ function renderCompanies(companyList) {
   companiesListHtlm.innerHTML = "";
 
   companyList
-    .sort(a, (b) => a.priority - b.priority)
+    .sort((a, b) => a.priority - b.priority)
     .forEach((element) => {
       companiesListHtlm.innerHTML += `
                 <div class="companies__card">
