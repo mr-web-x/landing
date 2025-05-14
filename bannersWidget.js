@@ -18,25 +18,21 @@ function renderBanners(companies) {
     const bannerDiv = document.createElement("div");
     bannerDiv.className = "banner-widget";
     bannerDiv.innerHTML = `
-                <a class="banner-widget__card" target="_blank" href="${company.siteLink}">
+                <a class="banner-widget__card" target="_blank" href="${company.link}">
 					<div class="banner-widget__card-item banner-widget__card-center">
-						<img src=${company.logo} alt="${company.title}" width="217px" height="73px">
+						<img src="/assets/companies/${company.logo}" alt="${company.companyName}" width="217px" height="73px">
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Úroková sadzba</span>
-						<figure>od <span>${company.percent}</span>%</figure>
+						<figure>od <span>${company.yearPercent}</span>%</figure>
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Lehota</span>
-						<figure>do <span>${company.daysDo}</span> dní</figure>
+						<figure>do <span>${company.term.to}</span> dní</figure>
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Summ</span>
-						<figure>do <span>${company.summDo}</span> €</figure>
-					</div>
-					<div class="banner-widget__card-item">
-						<span>Vek</span>
-						<figure>od <span>${company.years}</span> rokov</figure>
+						<figure>do <span>${company.amount.to}</span> €</figure>
 					</div>
 					<div class="banner-widget__card-item banner-widget__card-center">
 						<span style="background: ${company.color}" class="btn">Viac &#8594;</span>
