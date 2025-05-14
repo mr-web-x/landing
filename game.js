@@ -696,6 +696,7 @@ function renderGameOver() {
   var lines = ["👉 Ťuknite na obrazovku pre reštart hry"];
 
   if (score > 0) {
+    localStorage.setItem("score", score);
     lines = [
       `Získali ste zľavu: ${score}%`,
       `Zadajte promo kód ${promocode}`,
