@@ -6,6 +6,7 @@ var isMobile =
 var lastWindowWidth = window.innerWidth;
 var lastWindowHeight = window.innerHeight;
 var resizeThreshold = 50; // минимальное изменение размера в пикселях для активации перерисовки
+var promocode = null;
 
 (function (window) {
   console.log("start game...");
@@ -532,6 +533,8 @@ function startDemo() {
   canvas.addEventListener("touchstart", handleUserTap, false);
   canvas.addEventListener("mousedown", handleUserTap, false);
 
+  promocode = null;
+
   var logoText = "ZÍSKAJ ZĽAVU";
   if (!logoCanvas) {
     logoCanvas = document.createElement("canvas");
@@ -669,6 +672,11 @@ function gameOverHandler() {
   gameState = GAME_OVER;
   scrollSpeed = 0;
   gameEnded = true;
+
+  // Генерируем промо-код только один раз при завершении игры
+  if (promocode === null) {
+    promocode = Date.now().toString().substring(7, 12);
+  }
 }
 
 function renderGameOver() {
@@ -690,14 +698,14 @@ function renderGameOver() {
   if (score > 0) {
     lines = [
       `Získali ste zľavu: ${score}%`,
-      `Zadajte promo kód ${Date.now().toString().substring(7, 12)}`,
+      `Zadajte promo kód ${promocode}`,
       `pri registrácii cez jednu`,
       `z platforiem v Fastcredit`,
     ];
   }
 
   // Использование более четкого шрифта и настройка для лучшей четкости
-  context.font = "16px Arial, Helvetica, sans-serif";
+  context.font = "18px Arial, Helvetica, sans-serif";
   context.fillStyle = "#000000";
   context.textBaseline = "middle"; // Улучшит позиционирование
   context.textRendering = "geometricPrecision"; // Для поддерживаемых браузеров
