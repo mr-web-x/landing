@@ -10,8 +10,8 @@ let companiesFilterReset = document.querySelector(".companies-filter-reset");
 // fetch("/data/company.json")
 getCreditConditions().then((companyList) => {
   console.log(companyList);
-  companiesArray = companyList;
-  renderCompanies(companyList);
+  companiesArray = companyList.conditions;
+  renderCompanies(companyList.conditions);
 });
 
 companiesFilterForm.addEventListener("submit", (event) => {
