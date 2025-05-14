@@ -698,7 +698,7 @@ function renderGameOver() {
   if (score > 0) {
     localStorage.setItem("score", score);
     lines = [
-      `Získali ste zľavu: ${score}%`,
+      `Získali ste zľavu: ${Math.min(score, 20)}%`,
       `Zadajte promo kód ${promocode}`,
       `pri registrácii cez jednu`,
       `z platforiem v Fastcredit`,
