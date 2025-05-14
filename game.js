@@ -494,13 +494,7 @@ function handleUserTap(event) {
         }
         return;
       } else {
-        // если score == 0 — можно рестарт
-        if (homeButtonElement) {
-          homeButtonElement.remove();
-          homeButtonElement = null;
-          homeButtonShown = false;
-        }
-        commitResize(); // рестарт игры
+        window.location.reload();
       }
       break;
   }
