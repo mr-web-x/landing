@@ -414,6 +414,7 @@ footer .logo img {
 .modal__window {
   background: white;
   padding: 30px;
+  border-radius: 10px;
   position: relative;
   transition: all 0.3s;
   transform: scale(0.1);
@@ -512,4 +513,17 @@ footer .logo img {
 
 .cookies-open-btn {
   cursor: pointer;
+}
+
+.modal-game__content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.modal-game__content {
+  text-align: center;
+}
+
+.modal-game__content .btn {
+  margin-top: 20px;
 }

@@ -18,13 +18,19 @@ function renderBanners(companies) {
     const bannerDiv = document.createElement("div");
     bannerDiv.className = "banner-widget";
     bannerDiv.innerHTML = `
-                <a class="banner-widget__card" target="_blank" href="${company.link}">
+                <a class="banner-widget__card" target="_blank" href="${
+                  company.link
+                }">
 					<div class="banner-widget__card-item banner-widget__card-center">
-						<img src="/assets/companies/${company.logo}" alt="${company.companyName}" width="217px" height="73px">
+						<img src="/assets/companies/${company.logo}" alt="${
+      company.companyName
+    }" width="217px" height="73px">
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Úroková sadzba</span>
-						<figure>od <span>${company.yearPercent}</span>%</figure>
+						<figure>od <span>${((company.yearPercent * 100) / 365).toFixed(
+              2
+            )}</span>%</figure>
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Lehota</span>
