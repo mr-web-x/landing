@@ -617,7 +617,7 @@ function showHomeButton() {
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
   homeButtonElement.style.position = "fixed"; // используем fixed вместо absolute
-  homeButtonElement.style.top = "35%"; // используем процентное позиционирование
+  homeButtonElement.style.top = "45%"; // используем процентное позиционирование
   homeButtonElement.style.left = "50%";
   homeButtonElement.style.width = "80vw"; // ширина кнопки 80% от ширины экрана
   homeButtonElement.style.transform = "translateX(-50%)"; // центрируем кнопку
@@ -692,7 +692,7 @@ function renderGameOver() {
     ];
   }
 
-  context.font = "bold normal 18px sans-serif";
+  context.font = "normal 18px sans-serif";
   context.fillStyle = "#000";
   for (let i = 0; i < lines.length; i++) {
     const text = lines[i];
@@ -717,7 +717,7 @@ function renderLogo() {
 
 function renderInstructions() {
   var instruction = "Click or tap to flap :)";
-  context.font = "bold normal 18px sans-serif";
+  context.font = "normal 18px sans-serif";
   context.fillStyle = "#FFFFFF";
   context.fillText(
     instruction,
@@ -730,7 +730,7 @@ function renderScore() {
   context.font = fontProperties.getFontString();
   context.fillStyle = "#FFFFFF";
   context.strokeStyle = "#000000";
-  context.lineWidth = 3;
+  context.lineWidth = 1;
   var x = bounds.getCenterX() - context.measureText(score).width / 2;
   var y = bounds.height * 0.1;
   context.fillText(score, x, y);
