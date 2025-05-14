@@ -527,8 +527,8 @@ function renderGameOver() {
   //game over logo
   context.drawImage(
     gameOverCanvas,
-    bounds.getCenterX() - logoCanvas.width / 3,
-    canvas.height * 0.2
+    bounds.getCenterX() - logoCanvas.width / 2,
+    canvas.height * 0.15
   );
 
   var lines = ["👉 Ťuknite na obrazovku pre reštart hry"];
@@ -656,7 +656,7 @@ var birdCanvas;
 var birdYSpeed = 0;
 var gravity = 1;
 var tapBoost = 12;
-var birdSize = 40;
+var birdSize = 35;
 
 function updateBird() {
   characters[0].y += birdYSpeed;
@@ -831,8 +831,8 @@ function createCharacterImage(character) {
 var tubeGapHeight = 230; //needs some logic
 var tubesGapWidth;
 var tubes;
-var tubeWidth = 80; // ширина стол,ика
-var minTubeHeight = 40; // висота стол,ика
+var tubeWidth = 90; // ширина стол,ика
+var minTubeHeight = 45; // висота стол,ика
 
 function updateTubes() {
   for (var i = 0; i < tubes.length; i++) {
