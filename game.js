@@ -449,7 +449,7 @@ function startDemo() {
     gameOverCanvas = document.createElement("canvas");
     gameOverCanvasBG = document.createElement("canvas");
   }
-  createLogo("Hra skončila!", gameOverCanvas, gameOverCanvasBG);
+  createLogo("Hra skončila1", gameOverCanvas, gameOverCanvasBG);
 
   createGroundPattern();
   createBird();
@@ -526,7 +526,7 @@ function showHomeButton() {
   homeButtonElement.style.textDecoration = "none";
   homeButtonElement.style.textAlign = "center";
   homeButtonElement.style.cursor = "pointer";
-  homeButtonElement.style.zIndex = 1000;
+  homeButtonElement.style.zIndex = 5;
 
   canvasContainer.appendChild(homeButtonElement);
 }
