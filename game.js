@@ -527,7 +527,7 @@ function renderGameOver() {
   //game over logo
   context.drawImage(
     gameOverCanvas,
-    bounds.getCenterX() - logoCanvas.width / 2,
+    bounds.getCenterX() - logoCanvas.width / 3,
     canvas.height * 0.2
   );
 
@@ -552,11 +552,6 @@ function renderGameOver() {
     const y = canvas.height * 0.25 + gameOverCanvas.height + i * 36; // 24px — межстрочный интервал
     context.fillText(text, x, y);
   }
-  // context.fillText(
-  //   instruction,
-  //   bounds.getCenterX() - context.measureText(instruction).width / 2,
-  //   canvas.height * 0.25 + gameOverCanvas.height
-  // );
   renderScore();
 
   //window.requestAnimationFrame(loop, canvas);
@@ -661,7 +656,7 @@ var birdCanvas;
 var birdYSpeed = 0;
 var gravity = 1;
 var tapBoost = 12;
-var birdSize = 30;
+var birdSize = 40;
 
 function updateBird() {
   characters[0].y += birdYSpeed;
