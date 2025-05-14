@@ -617,8 +617,9 @@ function showHomeButton() {
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
   homeButtonElement.style.position = "fixed"; // используем fixed вместо absolute
-  homeButtonElement.style.top = "75%"; // используем процентное позиционирование
+  homeButtonElement.style.top = "35%"; // используем процентное позиционирование
   homeButtonElement.style.left = "50%";
+  homeButtonElement.style.width = "80vw"; // ширина кнопки 80% от ширины экрана
   homeButtonElement.style.transform = "translateX(-50%)"; // центрируем кнопку
   homeButtonElement.style.padding = "12px 24px";
   homeButtonElement.style.background = "#4CAF50";
