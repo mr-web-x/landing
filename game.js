@@ -664,7 +664,7 @@ function createLogo(logoText, logoCanvas, logoCanvassBG) {
   var textRect = new Sakri.Geom.Rectangle(
     0,
     0,
-    logoCanvas.width * 0.8,
+    logoCanvas.width * 0.6,
     logoCanvas.height
   );
   var logoFontProps = fontProperties.clone();
@@ -687,8 +687,8 @@ function createLogo(logoText, logoCanvas, logoCanvassBG) {
 
   logoContext.font = logoFontProps.getFontString();
   logoContext.fillStyle = logoContext.createPattern(logoCanvasBG, "repeat-x");
-  logoContext.strokeStyle = "#000000";
-  logoContext.lineWidth = 3;
+  logoContext.strokeStyle = "#000";
+  logoContext.lineWidth = 0;
   var x = logoCanvas.width / 2 - logoContext.measureText(logoText).width / 2;
   var y = logoFontProps.fontSize / 2;
   logoContext.fillText(logoText, x, 0);
