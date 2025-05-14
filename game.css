@@ -2,6 +2,7 @@
   margin: 0px;
   width: 100%;
   height: calc(100vh - 78px);
+  height: calc(100dvh - 78px);
 }
 
 .game-content {
@@ -15,4 +16,9 @@
   font-family: sans-serif;
   z-index: -1;
   opacity: 0;
+}
+
+footer {
+  height: 0 !important;
+  overflow: hidden;
 }
