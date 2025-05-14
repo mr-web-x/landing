@@ -320,6 +320,12 @@ var minimumStageHeight = 300;
 var maxStageWidth = 800;
 var maxStageHeight = 1100;
 var resizeTimeoutId = -1;
+// Кастомизация
+var gameEnded = false;
+var homeButtonShown = false;
+var homeButtonShown = false;
+var homeButtonElement = null;
+
 //var stats;
 
 function init() {
@@ -474,16 +480,55 @@ function handleUserTap(event) {
     case HOME:
       gameState = GAME;
       break;
+
     case GAME:
       birdYSpeed = -tapBoost;
       break;
+
     case GAME_OVER:
-      commitResize();
+      if (score > 0) {
+        // если есть очки — показываем кнопку и блокируем тап
+        if (!homeButtonShown) {
+          showHomeButton();
+          homeButtonShown = true;
+        }
+        return;
+      } else {
+        // если score == 0 — можно рестарт
+        if (homeButtonElement) {
+          homeButtonElement.remove();
+          homeButtonElement = null;
+          homeButtonShown = false;
+        }
+        commitResize(); // рестарт игры
+      }
       break;
   }
+
   if (event) {
     event.preventDefault();
   }
+}
+
+function showHomeButton() {
+  homeButtonElement = document.createElement("a");
+  homeButtonElement.href = "/";
+  homeButtonElement.innerText = "Na hlavnú stránku";
+  homeButtonElement.style.position = "absolute";
+  homeButtonElement.style.top = canvas.height * 0.85 + "px";
+  homeButtonElement.style.left = canvas.width / 2 - 100 + "px";
+  homeButtonElement.style.padding = "12px 24px";
+  homeButtonElement.style.background = "#4CAF50";
+  homeButtonElement.style.color = "#fff";
+  homeButtonElement.style.border = "none";
+  homeButtonElement.style.borderRadius = "8px";
+  homeButtonElement.style.fontSize = "18px";
+  homeButtonElement.style.textDecoration = "none";
+  homeButtonElement.style.textAlign = "center";
+  homeButtonElement.style.cursor = "pointer";
+  homeButtonElement.style.zIndex = 1000;
+
+  canvasContainer.appendChild(homeButtonElement);
 }
 
 function keyUpEventHandler(event) {
@@ -520,6 +565,8 @@ function renderGame() {
 function gameOverHandler() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   gameState = GAME_OVER;
+  scrollSpeed = 0;
+  gameEnded = true;
   renderGameOver();
 }
 
@@ -623,7 +670,7 @@ function createLogo(logoText, logoCanvas, logoCanvassBG) {
   var logoFontProps = fontProperties.clone();
   logoFontProps.fontSize = Sakri.CanvasTextUtil.getFontSizeForRect(
     logoText,
-    fontProperties,
+    logoFontProps,
     textRect
   );
 
@@ -656,7 +703,7 @@ var birdCanvas;
 var birdYSpeed = 0;
 var gravity = 1;
 var tapBoost = 12;
-var birdSize = 35;
+var birdSize = 32;
 
 function updateBird() {
   characters[0].y += birdYSpeed;
@@ -831,8 +878,8 @@ function createCharacterImage(character) {
 var tubeGapHeight = 230; //needs some logic
 var tubesGapWidth;
 var tubes;
-var tubeWidth = 90; // ширина стол,ика
-var minTubeHeight = 45; // висота стол,ика
+var tubeWidth = 100; // ширина стол,ика
+var minTubeHeight = 50; // висота стол,ика
 
 function updateTubes() {
   for (var i = 0; i < tubes.length; i++) {
