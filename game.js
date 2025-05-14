@@ -633,7 +633,7 @@ function showHomeButton() {
   homeButtonElement.style.textDecoration = "none";
   homeButtonElement.style.textAlign = "center";
   homeButtonElement.style.cursor = "pointer";
-  homeButtonElement.style.zIndex = "9999"; // очень высокий z-index
+  homeButtonElement.style.zIndex = "1"; // очень высокий z-index
 
   document.body.appendChild(homeButtonElement); // добавляем к body, а не к canvasContainer
 }
