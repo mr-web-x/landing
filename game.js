@@ -220,7 +220,6 @@
   Sakri.CanvasTextProperties.BOLD = "bold";
   Sakri.CanvasTextProperties.BOLDER = "bolder";
   Sakri.CanvasTextProperties.LIGHTER = "lighter";
-
   Sakri.CanvasTextProperties.ITALIC = "italic";
   Sakri.CanvasTextProperties.OBLIQUE = "oblique";
 
@@ -252,10 +251,10 @@
   Sakri.CanvasTextProperties.prototype.setFontSize = function (fontSize) {
     if (fontSize && fontSize.indexOf && fontSize.indexOf("px") > -1) {
       var size = fontSize.split("px")[0];
-      fontProperites.fontSize = isNaN(size) ? 24 : size; //24 is just an arbitrary number
+      fontProperites.fontSize = isNaN(size) ? 18 : size; //24 is just an arbitrary number
       return;
     }
-    this.fontSize = isNaN(fontSize) ? 24 : fontSize; //24 is just an arbitrary number
+    this.fontSize = isNaN(fontSize) ? 18 : fontSize; //24 is just an arbitrary number
   };
 
   Sakri.CanvasTextProperties.prototype.clone = function () {
@@ -404,7 +403,7 @@ function commitResize() {
 
 function stageTooSmallHandler() {
   var warning = "Sorry, bigger screen required :(";
-  context.font = "bold normal 24px sans-serif";
+  context.font = "bold normal 18px sans-serif";
   context.fillText(
     warning,
     bounds.getCenterX() - context.measureText(warning).width / 2,
@@ -425,26 +424,26 @@ var score;
 var fontProperties = new Sakri.CanvasTextProperties(
   Sakri.CanvasTextProperties.BOLD,
   null,
-  100
+  50
 );
 
-var word = "CREDIT";
+var word = "zľava";
 
 function startDemo() {
   canvas.addEventListener("touchstart", handleUserTap, false);
   canvas.addEventListener("mousedown", handleUserTap, false);
 
-  var logoText = "FLAPPY TEXT";
+  var logoText = "ZÍSKAJ ZĽAVU";
   if (!logoCanvas) {
     logoCanvas = document.createElement("canvas");
     logoCanvasBG = document.createElement("canvas");
   }
-  createLogo("FLAPPY TEXT", logoCanvas, logoCanvasBG);
+  createLogo("ZÍSKAJ ZĽAVU", logoCanvas, logoCanvasBG);
   if (!gameOverCanvas) {
     gameOverCanvas = document.createElement("canvas");
     gameOverCanvasBG = document.createElement("canvas");
   }
-  createLogo("GAME OVER", gameOverCanvas, gameOverCanvasBG);
+  createLogo("Hra skončila!", gameOverCanvas, gameOverCanvasBG);
 
   createGroundPattern();
   createBird();
@@ -532,14 +531,32 @@ function renderGameOver() {
     canvas.height * 0.2
   );
 
-  var instruction = "Click or tap to flap again.";
-  context.font = "bold normal 24px sans-serif";
-  context.fillStyle = "#FFFFFF";
-  context.fillText(
-    instruction,
-    bounds.getCenterX() - context.measureText(instruction).width / 2,
-    canvas.height * 0.25 + gameOverCanvas.height
-  );
+  var lines = ["👉 Ťuknite na obrazovku pre reštart hry"];
+
+  // var instruction = "👉 Ťuknite na obrazovku pre reštart hry";
+
+  if (score > 0) {
+    lines = [
+      `Získali ste zľavu: ${score}%`,
+      `Zadajte promo kód ${Date.now().toString().substring(7, 12)}`,
+      `pri registrácii cez jednu`,
+      `z platforiem v Fastcredit`,
+    ];
+  }
+
+  context.font = "bold normal 18px sans-serif";
+  context.fillStyle = "#000";
+  for (let i = 0; i < lines.length; i++) {
+    const text = lines[i];
+    const x = bounds.getCenterX() - context.measureText(text).width / 2;
+    const y = canvas.height * 0.25 + gameOverCanvas.height + i * 36; // 24px — межстрочный интервал
+    context.fillText(text, x, y);
+  }
+  // context.fillText(
+  //   instruction,
+  //   bounds.getCenterX() - context.measureText(instruction).width / 2,
+  //   canvas.height * 0.25 + gameOverCanvas.height
+  // );
   renderScore();
 
   //window.requestAnimationFrame(loop, canvas);
@@ -559,7 +576,7 @@ function renderLogo() {
 
 function renderInstructions() {
   var instruction = "Click or tap to flap :)";
-  context.font = "bold normal 24px sans-serif";
+  context.font = "bold normal 18px sans-serif";
   context.fillStyle = "#FFFFFF";
   context.fillText(
     instruction,
@@ -644,7 +661,7 @@ var birdCanvas;
 var birdYSpeed = 0;
 var gravity = 1;
 var tapBoost = 12;
-var birdSize = 60;
+var birdSize = 30;
 
 function updateBird() {
   characters[0].y += birdYSpeed;
@@ -745,7 +762,7 @@ var characters;
 var birdFontProperties = new Sakri.CanvasTextProperties(
   Sakri.CanvasTextProperties.BOLD,
   null,
-  50
+  32
 );
 
 function createBird() {
@@ -761,12 +778,12 @@ function createBird() {
   characters[0].y = groundGraphicRect.y / 2;
   characters[0].image = createCharacterImage(word.charAt(word.length - 1));
 
-  var x = characters[0].x - (birdCanvas.width + birdCanvas.width * 0.2);
+  var x = characters[0].x - (birdCanvas.width + birdCanvas.width * 0.05);
   for (var i = 1; i < word.length; i++) {
     characters[i] = {};
     characters[i].x = x;
     characters[i].y = characters[0].y;
-    x -= birdCanvas.width + birdCanvas.width * 0.2;
+    x -= birdCanvas.width + birdCanvas.width * 0.05;
     characters[i].image = createCharacterImage(
       word.charAt(word.length - i - 1)
     );
@@ -778,22 +795,22 @@ function createCharacterImage(character) {
   birdContext.textBaseline = "top";
 
   birdContext.font = birdFontProperties.getFontString();
-  birdContext.fillStyle = "#d5bb22";
+  birdContext.fillStyle = "#045c68";
   birdContext.fillRect(0, 0, birdSize, birdSize / 2);
-  birdContext.fillStyle = "#e97b13";
+  birdContext.fillStyle = "#045c68";
   birdContext.fillRect(0, birdSize / 2, birdSize, birdSize / 2);
   //hilite
-  birdContext.fillStyle = "#e0e9a9";
+  birdContext.fillStyle = "#045c68";
   birdContext.fillRect(0, 0, birdSize, 6);
   //"mouth"
-  birdContext.fillStyle = "#da473b";
+  birdContext.fillStyle = "#045c68";
   birdContext.fillRect(0, birdSize - 10, birdSize, birdSize);
 
-  birdContext.lineWidth = 3;
-  birdContext.strokeStyle = "#4d2f3b";
+  birdContext.lineWidth = 0;
+  birdContext.strokeStyle = "white";
   birdContext.strokeRect(2, 2, birdSize - 4, birdSize - 4);
 
-  birdContext.fillStyle = "#e8fcd6";
+  birdContext.fillStyle = "white";
   birdContext.fillText(
     character,
     birdSize / 2 - birdContext.measureText(character).width / 2,
@@ -819,8 +836,8 @@ function createCharacterImage(character) {
 var tubeGapHeight = 230; //needs some logic
 var tubesGapWidth;
 var tubes;
-var tubeWidth = 100; //needs some logic
-var minTubeHeight = 50; //needs some logic
+var tubeWidth = 80; // ширина стол,ика
+var minTubeHeight = 40; // висота стол,ика
 
 function updateTubes() {
   for (var i = 0; i < tubes.length; i++) {
