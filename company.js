@@ -7,11 +7,15 @@ let companiesSelectDays = document.getElementById("slct-days");
 let companiesArray = [];
 let companiesFilterReset = document.querySelector(".companies-filter-reset");
 
-getCreditConditions().then((companyList) => {
-  console.log(companyList);
-  companiesArray = companyList.conditions;
-  renderCompanies(companyList.conditions);
-});
+getCreditConditions()
+  .then((companyList) => {
+    console.log(companyList);
+    companiesArray = companyList.conditions;
+    renderCompanies(companyList.conditions);
+  })
+  .catch((error) => {
+    companiesListHtlm.innerHTML = "<p>Failed to load companies</p>";
+  });
 
 companiesFilterForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -110,10 +114,9 @@ function renderCompanies(companyList) {
 					</div>
 					<div class="companies__card-item companies__card-info">
 						<span>Úroková sadzba</span>
-						<figure>od <span>${(
-              (element.yearPercent * 100) /
-              365
-            ).toFixed(2)}</span>%</figure>
+						<figure>od <span>${((element.yearPercent * 100) / 365).toFixed(
+              2
+            )}</span>%</figure>
 					</div>
 					<div class="companies__card-item companies__card-info">
 						<span>Lehota</span>
