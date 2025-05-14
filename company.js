@@ -113,7 +113,7 @@ function renderCompanies(companyList) {
 						<figure>od <span>${(
               (element.yearPercent * 100) /
               365
-            ).toFixed()}</span>%</figure>
+            ).toFixed(2)}</span>%</figure>
 					</div>
 					<div class="companies__card-item companies__card-info">
 						<span>Lehota</span>

@@ -28,10 +28,9 @@ function renderBanners(companies) {
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Úroková sadzba</span>
-						<figure>od <span>${(
-              (company.yearPercent * 100) /
-              365
-            ).toFixed()}</span>%</figure>
+						<figure>od <span>${((company.yearPercent * 100) / 365).toFixed(
+              2
+            )}</span>%</figure>
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Lehota</span>
