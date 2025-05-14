@@ -98,8 +98,10 @@ companiesFilterReset.addEventListener("click", () => {
 function renderCompanies(companyList) {
   companiesListHtlm.innerHTML = "";
 
-  companyList.forEach((element) => {
-    companiesListHtlm.innerHTML += `
+  companyList
+    .sort(a, (b) => a.priority - b.priority)
+    .forEach((element) => {
+      companiesListHtlm.innerHTML += `
                 <div class="companies__card">
 					<div class="companies__card-item companies__card-logo">
 						<img src="/assets/companies/${element.logo}" alt="${element.companyName}" width="217px" height="73px">
@@ -121,7 +123,7 @@ function renderCompanies(companyList) {
 					</div>
 				</div>
         `;
-  });
+    });
 
   // <div class="companies__card-item companies__card-info">
   // 	<span>Vek</span>
