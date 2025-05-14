@@ -1,12 +1,11 @@
-/*
- *
- * @author Sakri Rosenstrom
- * http://www.sakri.net
- * https://twitter.com/sakri
- * http://www.devstate.net
- * Sources for this can be found at:
- * https://github.com/sakri/sakriNetCommonJS
- */
+// В начале файла добавим определение мобильного устройства
+var isMobile =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+var lastWindowWidth = window.innerWidth;
+var lastWindowHeight = window.innerHeight;
+var resizeThreshold = 50; // минимальное изменение размера в пикселях для активации перерисовки
 
 (function (window) {
   console.log("start game...");
@@ -329,59 +328,55 @@ var isResizing = false;
 
 //var stats;
 
+// Обновленная функция init
 function init() {
   canvasContainer = document.getElementById("canvasContainer");
-  window.onresize = resizeHandler;
-  //stats = new Stats();
-  //canvasContainer.appendChild( stats.getDisplayElement() );
+
+  // Используем отдельный обработчик для мобильных устройств
+  if (isMobile) {
+    // Установим фиксированную высоту для канваса на мобильных
+    canvasContainer.style.height = window.innerHeight + "px";
+
+    // Отслеживаем только изменение ориентации
+    window.addEventListener("orientationchange", function () {
+      setTimeout(commitResize, 300);
+    });
+
+    // Предотвращаем масштабирование страницы
+    document.addEventListener(
+      "touchmove",
+      function (e) {
+        if (e.scale !== 1) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+  } else {
+    // На десктопе используем стандартный обработчик изменения размера
+    window.onresize = intelligentResizeHandler;
+  }
+
   window.addEventListener("keydown", keyUpEventHandler, false);
 
-  // Prevent default scrolling on touch devices
-  document.addEventListener(
-    "touchmove",
-    function (e) {
-      if (isResizing) {
-        e.preventDefault();
-      }
-    },
-    { passive: false }
-  );
-
-  // Track touch starts to manage scrolling
-  let touchStartY;
-  document.addEventListener(
-    "touchstart",
-    function (e) {
-      touchStartY = e.touches[0].clientY;
-    },
-    false
-  );
-
-  // Prevent resize during scroll
-  document.addEventListener(
-    "touchmove",
-    function (e) {
-      const touchY = e.touches[0].clientY;
-      const diff = Math.abs(touchStartY - touchY);
-
-      // If scrolling vertically, prevent resize events
-      if (diff > 10) {
-        isResizing = true;
-      }
-    },
-    false
-  );
-
-  // Reset resize flag on touch end
-  document.addEventListener(
-    "touchend",
-    function () {
-      isResizing = false;
-    },
-    false
-  );
-
   commitResize();
+}
+
+// Новая функция для умного определения необходимости перерисовки
+function intelligentResizeHandler() {
+  // Проверяем, действительно ли существенно изменился размер окна
+  var widthDiff = Math.abs(window.innerWidth - lastWindowWidth);
+  var heightDiff = Math.abs(window.innerHeight - lastWindowHeight);
+
+  if (widthDiff > resizeThreshold || heightDiff > resizeThreshold) {
+    // Реальное изменение размера, запоминаем новые размеры
+    lastWindowWidth = window.innerWidth;
+    lastWindowHeight = window.innerHeight;
+
+    // Вызываем настоящий обработчик размера
+    resizeHandler();
+  }
+  // В противном случае игнорируем событие (мелкое изменение при скролле)
 }
 
 function getWidth(element) {
@@ -399,7 +394,7 @@ function getHeight(element) {
   );
 }
 
-//avoid running resize scripts repeatedly if a browser window is being resized by dragging
+// Обновленная функция resizeHandler
 function resizeHandler() {
   if (isResizing) {
     return;
@@ -407,19 +402,39 @@ function resizeHandler() {
 
   isResizing = true;
 
-  // Preserve current game state
-  var currentGameState = gameState;
-  var currentScore = score;
-
   if (canvas) {
     context.clearRect(0, 0, canvas.width, canvas.height);
   }
 
   clearTimeout(resizeTimeoutId);
+
+  // Сохраняем текущее состояние игры перед очисткой
+  var savedGameState = gameState;
+  var savedScore = score;
+  var hadHomeButton = homeButtonShown;
+
   clearTimeoutsAndIntervals();
 
   resizeTimeoutId = setTimeout(function () {
     commitResize();
+
+    // После перерисовки проверяем, нужно ли восстановить состояние
+    if (savedGameState === GAME_OVER && savedScore > 0) {
+      // Восстанавливаем состояние конца игры
+      gameState = GAME_OVER;
+      score = savedScore;
+      gameEnded = true;
+      scrollSpeed = 0;
+
+      // Если была кнопка домой, восстанавливаем ее
+      if (hadHomeButton) {
+        setTimeout(function () {
+          showHomeButton();
+          homeButtonShown = true;
+        }, 100);
+      }
+    }
+
     isResizing = false;
   }, 300);
 }
@@ -527,7 +542,7 @@ function startDemo() {
     gameOverCanvas = document.createElement("canvas");
     gameOverCanvasBG = document.createElement("canvas");
   }
-  createLogo("Hra 1 skončila!", gameOverCanvas, gameOverCanvasBG);
+  createLogo("Hra skončila!", gameOverCanvas, gameOverCanvasBG);
 
   createGroundPattern();
   createBird();
@@ -593,17 +608,18 @@ function handleUserTap(event) {
 }
 
 function showHomeButton() {
-  // Prevent duplicate buttons
-  if (homeButtonElement) {
-    return;
+  // Удаляем предыдущую кнопку, если она есть
+  if (homeButtonElement && homeButtonElement.parentNode) {
+    homeButtonElement.parentNode.removeChild(homeButtonElement);
   }
 
   homeButtonElement = document.createElement("a");
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
-  homeButtonElement.style.position = "absolute";
-  homeButtonElement.style.top = canvas.height * 0.85 + "px";
-  homeButtonElement.style.left = canvas.width / 2 - 100 + "px";
+  homeButtonElement.style.position = "fixed"; // используем fixed вместо absolute
+  homeButtonElement.style.top = "75%"; // используем процентное позиционирование
+  homeButtonElement.style.left = "50%";
+  homeButtonElement.style.transform = "translateX(-50%)"; // центрируем кнопку
   homeButtonElement.style.padding = "12px 24px";
   homeButtonElement.style.background = "#4CAF50";
   homeButtonElement.style.color = "#fff";
@@ -613,9 +629,9 @@ function showHomeButton() {
   homeButtonElement.style.textDecoration = "none";
   homeButtonElement.style.textAlign = "center";
   homeButtonElement.style.cursor = "pointer";
-  homeButtonElement.style.zIndex = 5;
+  homeButtonElement.style.zIndex = "9999"; // очень высокий z-index
 
-  canvasContainer.appendChild(homeButtonElement);
+  document.body.appendChild(homeButtonElement); // добавляем к body, а не к canvasContainer
 }
 
 function keyUpEventHandler(event) {
