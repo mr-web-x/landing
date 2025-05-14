@@ -323,8 +323,9 @@ var resizeTimeoutId = -1;
 // Кастомизация
 var gameEnded = false;
 var homeButtonShown = false;
-var homeButtonShown = false;
 var homeButtonElement = null;
+var requestAnimationFrameId = null;
+var isResizing = false;
 
 //var stats;
 
@@ -334,6 +335,52 @@ function init() {
   //stats = new Stats();
   //canvasContainer.appendChild( stats.getDisplayElement() );
   window.addEventListener("keydown", keyUpEventHandler, false);
+
+  // Prevent default scrolling on touch devices
+  document.addEventListener(
+    "touchmove",
+    function (e) {
+      if (isResizing) {
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+
+  // Track touch starts to manage scrolling
+  let touchStartY;
+  document.addEventListener(
+    "touchstart",
+    function (e) {
+      touchStartY = e.touches[0].clientY;
+    },
+    false
+  );
+
+  // Prevent resize during scroll
+  document.addEventListener(
+    "touchmove",
+    function (e) {
+      const touchY = e.touches[0].clientY;
+      const diff = Math.abs(touchStartY - touchY);
+
+      // If scrolling vertically, prevent resize events
+      if (diff > 10) {
+        isResizing = true;
+      }
+    },
+    false
+  );
+
+  // Reset resize flag on touch end
+  document.addEventListener(
+    "touchend",
+    function () {
+      isResizing = false;
+    },
+    false
+  );
+
   commitResize();
 }
 
@@ -354,16 +401,40 @@ function getHeight(element) {
 
 //avoid running resize scripts repeatedly if a browser window is being resized by dragging
 function resizeHandler() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  if (isResizing) {
+    return;
+  }
+
+  isResizing = true;
+
+  // Preserve current game state
+  var currentGameState = gameState;
+  var currentScore = score;
+
+  if (canvas) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
   clearTimeout(resizeTimeoutId);
   clearTimeoutsAndIntervals();
-  resizeTimeoutId = setTimeout(commitResize, 300);
+
+  resizeTimeoutId = setTimeout(function () {
+    commitResize();
+    isResizing = false;
+  }, 300);
 }
 
 function commitResize() {
   if (canvas) {
     canvasContainer.removeChild(canvas);
   }
+
+  // Remove home button if it exists
+  if (homeButtonElement && homeButtonElement.parentNode) {
+    homeButtonElement.parentNode.removeChild(homeButtonElement);
+    homeButtonElement = null;
+  }
+
   canvas = document.createElement("canvas");
   canvas.style.position = "absolute";
   context = canvas.getContext("2d");
@@ -398,11 +469,18 @@ function commitResize() {
   }
 
   var textInputSpan = document.getElementById("textInputSpan");
-  var textInputSpanY = (canvas.height - canvas.height * 0.85) / 2 + 15; //15 is an estimate for half of textInputHeight
-  textInputSpan.style.top =
-    htmlBounds.getCenterY() + bounds.height / 2 - textInputSpanY + "px";
-  textInputSpan.style.left =
-    htmlBounds.getCenterX() - getWidth(textInputSpan) / 2 + "px";
+  if (textInputSpan) {
+    var textInputSpanY = (canvas.height - canvas.height * 0.85) / 2 + 15; //15 is an estimate for half of textInputHeight
+    textInputSpan.style.top =
+      htmlBounds.getCenterY() + bounds.height / 2 - textInputSpanY + "px";
+    textInputSpan.style.left =
+      htmlBounds.getCenterX() - getWidth(textInputSpan) / 2 + "px";
+  }
+
+  // Reset game state
+  gameEnded = false;
+  homeButtonShown = false;
+  score = 0;
 
   startDemo();
 }
@@ -457,7 +535,12 @@ function startDemo() {
   createCityGraphic();
   score = 0;
   gameState = HOME;
-  loop();
+
+  // Start the main loop
+  if (requestAnimationFrameId) {
+    window.cancelAnimationFrame(requestAnimationFrameId);
+  }
+  requestAnimationFrameId = window.requestAnimationFrame(loop);
 }
 
 function loop() {
@@ -473,6 +556,11 @@ function loop() {
       break;
   }
   //stats.tick();
+
+  // Continue the loop unless game is over
+  if (gameState !== -1) {
+    requestAnimationFrameId = window.requestAnimationFrame(loop);
+  }
 }
 
 function handleUserTap(event) {
@@ -505,6 +593,11 @@ function handleUserTap(event) {
 }
 
 function showHomeButton() {
+  // Prevent duplicate buttons
+  if (homeButtonElement) {
+    return;
+  }
+
   homeButtonElement = document.createElement("a");
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
@@ -537,7 +630,6 @@ function renderHome() {
   renderGroundPattern();
   renderLogo();
   renderInstructions();
-  window.requestAnimationFrame(loop, canvas);
 }
 
 function renderGame() {
@@ -553,7 +645,6 @@ function renderGame() {
   renderGroundPattern();
   updateScore();
   renderScore();
-  window.requestAnimationFrame(loop, canvas);
 }
 
 function gameOverHandler() {
@@ -561,7 +652,6 @@ function gameOverHandler() {
   gameState = GAME_OVER;
   scrollSpeed = 0;
   gameEnded = true;
-  renderGameOver();
 }
 
 function renderGameOver() {
@@ -594,8 +684,6 @@ function renderGameOver() {
     context.fillText(text, x, y);
   }
   renderScore();
-
-  //window.requestAnimationFrame(loop, canvas);
 }
 
 function renderLogo() {
@@ -872,8 +960,8 @@ function createCharacterImage(character) {
 var tubeGapHeight = 230; //needs some logic
 var tubesGapWidth;
 var tubes;
-var tubeWidth = 100; // ширина стол,ика
-var minTubeHeight = 50; // висота стол,ика
+var tubeWidth = 100; // ширина столбика
+var minTubeHeight = 50; // висота столбика
 
 function updateTubes() {
   for (var i = 0; i < tubes.length; i++) {
@@ -987,7 +1075,9 @@ var cityGraphicCanvas;
 
 function createCityGraphic() {
   if (cityGraphicCanvas) {
-    canvasContainer.removeChild(cityGraphicCanvas);
+    if (cityGraphicCanvas.parentNode) {
+      canvasContainer.removeChild(cityGraphicCanvas);
+    }
   }
   cityGraphicCanvas = document.createElement("canvas");
   cityGraphicCanvas.style.position = "absolute";
@@ -1182,7 +1272,25 @@ function createGroundPattern() {
 }
 
 function clearTimeoutsAndIntervals() {
+  // Cancel animation frame if it exists
+  if (requestAnimationFrameId) {
+    window.cancelAnimationFrame(requestAnimationFrameId);
+    requestAnimationFrameId = null;
+  }
+
+  // Reset game state
   gameState = -1;
+  gameEnded = false;
+  isHit = false;
+
+  // Remove home button if it exists
+  if (homeButtonElement && homeButtonElement.parentNode) {
+    homeButtonElement.parentNode.removeChild(homeButtonElement);
+    homeButtonElement = null;
+  }
+
+  homeButtonShown = false;
+  score = 0;
 }
 
 var maxCharacters = 8;
