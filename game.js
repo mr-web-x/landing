@@ -449,7 +449,7 @@ function startDemo() {
     gameOverCanvas = document.createElement("canvas");
     gameOverCanvasBG = document.createElement("canvas");
   }
-  createLogo("Hra skončila1", gameOverCanvas, gameOverCanvasBG);
+  createLogo("Hra 1 skončila!", gameOverCanvas, gameOverCanvasBG);
 
   createGroundPattern();
   createBird();
