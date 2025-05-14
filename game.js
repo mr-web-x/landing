@@ -617,7 +617,7 @@ function showHomeButton() {
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
   homeButtonElement.style.position = "fixed"; // используем fixed вместо absolute
-  homeButtonElement.style.top = "45%"; // используем процентное позиционирование
+  homeButtonElement.style.top = "40%"; // используем процентное позиционирование
   homeButtonElement.style.left = "50%";
   homeButtonElement.style.width = "80vw"; // ширина кнопки 80% от ширины экрана
   homeButtonElement.style.transform = "translateX(-50%)"; // центрируем кнопку
@@ -672,16 +672,20 @@ function gameOverHandler() {
 }
 
 function renderGameOver() {
-  //game over logo
+  // Очистка области перед рендерингом для предотвращения наложения
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Отключаем сглаживание для более четкого текста
+  context.imageSmoothingEnabled = false;
+
+  // Рисуем лого окончания игры
   context.drawImage(
     gameOverCanvas,
-    bounds.getCenterX() - logoCanvas.width / 2,
-    canvas.height * 0.15
+    Math.round(bounds.getCenterX() - logoCanvas.width / 2), // округляем до целых пикселей
+    Math.round(canvas.height * 0.15)
   );
 
   var lines = ["👉 Ťuknite na obrazovku pre reštart hry"];
-
-  // var instruction = "👉 Ťuknite na obrazovku pre reštart hry";
 
   if (score > 0) {
     lines = [
@@ -692,14 +696,41 @@ function renderGameOver() {
     ];
   }
 
-  context.font = "normal 18px sans-serif";
-  context.fillStyle = "#000";
+  // Использование более четкого шрифта и настройка для лучшей четкости
+  context.font = "16px Arial, Helvetica, sans-serif";
+  context.fillStyle = "#000000";
+  context.textBaseline = "middle"; // Улучшит позиционирование
+  context.textRendering = "geometricPrecision"; // Для поддерживаемых браузеров
+
+  // Увеличиваем размер текста для лучшей четкости на мобильных устройствах
+  var fontSize = 18;
+  if (window.innerWidth <= 768) {
+    fontSize = 20; // Больший размер для мобильных
+  }
+  context.font = `${fontSize}px Arial, Helvetica, sans-serif`;
+
+  // Цикл для рендеринга текста
   for (let i = 0; i < lines.length; i++) {
     const text = lines[i];
-    const x = bounds.getCenterX() - context.measureText(text).width / 2;
-    const y = canvas.height * 0.25 + gameOverCanvas.height + i * 36; // 24px — межстрочный интервал
+    // Округляем координаты до целых пикселей для четкости
+    const x = Math.round(
+      bounds.getCenterX() - context.measureText(text).width / 2
+    );
+    const y = Math.round(canvas.height * 0.25 + gameOverCanvas.height + i * 36);
+
+    // Для улучшения четкости текста, рисуем сначала обводку
+    context.strokeStyle = "#ffffff"; // белая обводка
+    context.lineWidth = 2;
+    context.strokeText(text, x, y);
+
+    // Затем рисуем сам текст
+    context.fillStyle = "#000000";
     context.fillText(text, x, y);
   }
+
+  // Включаем сглаживание обратно для остальной графики
+  context.imageSmoothingEnabled = true;
+
   renderScore();
 }
 
