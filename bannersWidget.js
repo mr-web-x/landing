@@ -1,8 +1,8 @@
-fetch("/data/company.json")
-  .then((data) => data.json())
-  .then((companies) => {
-    renderBanners(companies);
-  });
+import { getCreditConditions } from "./service.js";
+
+getCreditConditions().then((companyList) => {
+  renderBanners(companyList.conditions);
+});
 
 function renderBanners(companies) {
   let headings = document.querySelectorAll(".article-content h2");

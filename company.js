@@ -7,7 +7,6 @@ let companiesSelectDays = document.getElementById("slct-days");
 let companiesArray = [];
 let companiesFilterReset = document.querySelector(".companies-filter-reset");
 
-// fetch("/data/company.json")
 getCreditConditions().then((companyList) => {
   console.log(companyList);
   companiesArray = companyList.conditions;
