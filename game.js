@@ -7,6 +7,19 @@ var lastWindowWidth = window.innerWidth;
 var lastWindowHeight = window.innerHeight;
 var resizeThreshold = 50; // минимальное изменение размера в пикселях для активации перерисовки
 var promocode = null;
+let modal = document.getElementById("modal");
+let closeModalButton = document.getElementById("close-modal");
+let modalForm = document.getElementById("modal-form");
+
+closeModalButton.addEventListener("click", function () {
+  modal.classList.remove("active");
+});
+
+modalForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  gameState = GAME;
+  modal.classList.remove("active");
+});
 
 (function (window) {
   console.log("start game...");
@@ -317,7 +330,7 @@ var htmlBounds;
 var bounds;
 var minimumStageWidth = 300;
 var minimumStageHeight = 300;
-var maxStageWidth = 800;
+var maxStageWidth = 1600;
 var maxStageHeight = 1100;
 var resizeTimeoutId = -1;
 // Кастомизация
@@ -584,7 +597,8 @@ function loop() {
 function handleUserTap(event) {
   switch (gameState) {
     case HOME:
-      gameState = GAME;
+      modal.classList.add("active");
+      // gameState = GAME;
       break;
 
     case GAME:
@@ -620,9 +634,10 @@ function showHomeButton() {
   homeButtonElement.href = "/";
   homeButtonElement.innerText = "Na hlavnú stránku";
   homeButtonElement.style.position = "fixed"; // используем fixed вместо absolute
-  homeButtonElement.style.top = "40%"; // используем процентное позиционирование
+  homeButtonElement.style.top = "45%"; // используем процентное позиционирование
   homeButtonElement.style.left = "50%";
-  homeButtonElement.style.width = "80vw"; // ширина кнопки 80% от ширины экрана
+  homeButtonElement.style.width = "100%"; // ширина кнопки 80% от ширины экрана
+  homeButtonElement.style.maxWidth = "320px"; // ширина кнопки 80% от ширины экрана
   homeButtonElement.style.transform = "translateX(-50%)"; // центрируем кнопку
   homeButtonElement.style.padding = "12px 24px";
   homeButtonElement.style.background = "#4CAF50";

@@ -1,8 +1,8 @@
 #canvasContainer {
   margin: 0px;
   width: 100%;
-  height: calc(100vh - 78px);
-  height: calc(100dvh - 78px);
+  height: calc(100vh - 88px);
+  height: calc(100dvh - 88px);
 }
 
 .game-content {
@@ -23,4 +23,71 @@ footer {
   overflow: hidden;
   padding: 0;
   margin: 0;
+}
+
+.modal h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal .btn {
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.modal__window {
+  max-width: 480px;
+}
+
+.modal-game__texts {
+  max-height: 50vh;
+  max-height: 50dvh;
+  height: 100%;
+  overflow: auto;
+  margin: 15px 0;
+  padding: 8px 8px 8px 0;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.modal-game__texts ul {
+  margin-left: 20px;
+}
+
+.modal-game__texts ul li {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.modal-game__texts::-webkit-scrollbar {
+  width: 8px;
+  background: #ccc;
+}
+
+.modal-game__texts::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.modal .custom-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.modal h3 {
+  font-size: 16px;
+  margin: 12px 0 6px 0;
+}
+
+.modal p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+@media all and (max-width: 480px) {
+  #canvasContainer {
+    height: calc(100vh - 78px);
+    height: calc(100dvh - 78px);
+  }
 }
