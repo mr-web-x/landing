@@ -625,7 +625,7 @@ function handleUserTap(event) {
 }
 
 function showHomeButton() {
-  // Удаляем предыдущую кнопку, если она есть
+  // Удаляем предыдущую кнопку, если она есть!
   if (homeButtonElement && homeButtonElement.parentNode) {
     homeButtonElement.parentNode.removeChild(homeButtonElement);
   }
