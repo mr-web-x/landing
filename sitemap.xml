@@ -10,6 +10,11 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc> https://fastcredit.sk/game.html</loc>
+  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://fastcredit.sk/blog/vyber-uveru-sk.html</loc>
   <lastmod>2025-05-06T10:32:21+00:00</lastmod>
   <priority>0.80</priority>
@@ -71,11 +76,6 @@
 </url>
 <url>
   <loc> https://fastcredit.sk/blog/studentske-pozicky-na-vzdelanie.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/game.html</loc>
   <lastmod>2025-05-06T10:32:23+00:00</lastmod>
   <priority>0.80</priority>
 </url>
