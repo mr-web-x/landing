@@ -390,20 +390,6 @@
                 </p>
               </li>
             </ul>
-            <!-- <h3>
-              📌
-              <strong>Odporúčame na prečítanie:</strong><br />
-              <em>
-                <a
-                  href="https://fastcredit.sk/blog/rychla-pozicka-do-500-eur.html"
-                >
-                  Rýchla pôžička do 500 eur – ako funguje a kto ju môže získať?
-                </a>
-              </em>
-            </h3> -->
-
-            
-
             <h3 data-start="3234" data-end="3251">Crowdfunding</h3>
             <p class="" data-start="3253" data-end="3358">
               Platformy ako Kickstarter, StartLab.sk, Seedrs umožňuj&uacute;
@@ -470,6 +456,94 @@
               >
             </p>
           </article>
+        </div>
+      </section>
+
+      <section id="blog-list" class="policy">
+        <div class="container">
+          <h2>Publikované články</h2>
+          <div class="policy__wrapper">
+            <details>
+              <summary>
+                1. Ako si vybrať najvýhodnejší úver na Slovensku
+              </summary>
+              <div class="policy__details">
+                <p>
+                  <a
+                    class="special-link"
+                    href="/blog/ako-vybrat-najvyhodnejsi-uver.html"
+                  >
+                    Prejsť na článok
+                  </a>
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                2. Rozdiel medzi mikropôžičkou a spotrebným úverom
+              </summary>
+              <div class="policy__details">
+                <p>
+                  <a
+                    class="special-link"
+                    href="/blog/rozdiel-mikropozicka-spotrebny-uver.html"
+                  >
+                    Prejsť na článok
+                  </a>
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                3. Štátna pomoc pre malé podniky – čo je aktuálne k dispozícii?
+              </summary>
+              <div class="policy__details">
+                <p>
+                  <a
+                    class="special-link"
+                    href="/blog/statna-pomoc-male-podniky.html"
+                  >
+                    Prejsť na článok
+                  </a>
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>4. P2P pôžičky: výhody, riziká a ako začať</summary>
+              <div class="policy__details">
+                <p>
+                  <a
+                    class="special-link"
+                    href="/blog/p2p-pozicky-vyhody-rizika.html"
+                  >
+                    Prejsť na článok
+                  </a>
+                </p>
+              </div>
+            </details>
+
+            <p class="policy__date">
+              <strong>Posledná aktualizácia zoznamu:</strong>
+              <span id="update-blog-date"></span>
+            </p>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const today = new Date();
+                const day = String(today.getDate()).padStart(2, "0");
+                const month = String(today.getMonth() + 1).padStart(2, "0");
+                const year = today.getFullYear();
+                const formattedDate = `${day}.${month}.${year}`;
+                const dateElement = document.getElementById("update-blog-date");
+                if (dateElement) {
+                  dateElement.textContent = formattedDate;
+                }
+              });
+            </script>
+          </div>
         </div>
       </section>
     </main>
