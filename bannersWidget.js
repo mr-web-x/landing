@@ -12,7 +12,7 @@ function renderBanners(companies) {
 
   const randomNumbers = getUniqueRandomNumbers(0, companies.length - 1, 2);
 
-  // Функция для создания баннера
+  // Функция для создания динамического баннера
   function createBanner(company) {
     console.log("company", company);
     const bannerDiv = document.createElement("div");
@@ -47,33 +47,67 @@ function renderBanners(companies) {
     return bannerDiv;
   }
 
+  // Функция для создания статичной рекламы
+  function createStaticAd() {
+    const staticAdDiv = document.createElement("div");
+    staticAdDiv.className = "static-ad-widget";
+    staticAdDiv.innerHTML = `
+      <div
+        style="
+          border: 1px solid #ddd;
+          padding: 15px;
+          margin: 30px 0;
+          border-radius: 8px;
+          background-color: white;
+        "
+      >
+        📌<strong>Odporúčame na prečítanie:</strong><br />
+        <a
+          href="/blog/rychla-pozicka-do-500-eur.html"
+          style="font-weight: bold; color: #007b7f"
+        >
+          Rýchla pôžička do 500 eur – ako funguje a kto ju môže získať?
+        </a>
+        <p style="margin-top: 5px; font-size: 14px; color: #555">
+          Zistite, kto má nárok a aké sú výhody tejto formy rýchleho
+          financovania.
+        </p>
+      </div>`;
+    return staticAdDiv;
+  }
+
   if (count === 1) {
     headings[0].before(createBanner(companies[randomNumbers[0]]));
   }
 
-  // Если 3 заголовка — добавляем после 1 и 2
+  // Если 2 заголовка — добавляем первый баннер, статичную рекламу, второй баннер
   if (count === 2) {
     headings[0].before(createBanner(companies[randomNumbers[0]]));
+    headings[0].before(createStaticAd());
     headings[1].before(createBanner(companies[randomNumbers[1]]));
   }
 
   if (count === 3) {
     headings[1].before(createBanner(companies[randomNumbers[0]]));
+    headings[1].before(createStaticAd());
     headings[2].before(createBanner(companies[randomNumbers[1]]));
   }
 
-  // Если больше 3 заголовков — делим на 4 части и вставляем после 2 и 3 частей
+  // Если больше 3 заголовков — делим на 4 части и вставляем баннеры с статичной рекламой между ними
   if (count > 3) {
     let part = Math.floor(count / 4);
 
-    // Индексы после которых вставлять баннер
+    // Индексы после которых вставлять баннеры
     let insertAfter1 = part * 2 - 1;
     let insertAfter2 = part * 4 - 1;
 
-    if (headings[insertAfter1])
+    if (headings[insertAfter1]) {
       headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
-    if (headings[insertAfter2])
+      headings[insertAfter1].before(createStaticAd());
+    }
+    if (headings[insertAfter2]) {
       headings[insertAfter2].before(createBanner(companies[randomNumbers[1]]));
+    }
   }
 }
 
@@ -134,6 +168,10 @@ max-height: 73px;
 }
 
 .banner-widget{
+  margin: 30px 0;
+}
+
+.static-ad-widget {
   margin: 30px 0;
 }
 
