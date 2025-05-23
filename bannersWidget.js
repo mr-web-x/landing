@@ -58,7 +58,7 @@ function renderBanners(companies) {
           margin: 30px 0;
           border-radius: 8px;
           background-color: white;
-          dispay: block;
+          display: block;
           text-decoration: none;
         ">
       
