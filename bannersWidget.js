@@ -52,27 +52,28 @@ function renderBanners(companies) {
     const staticAdDiv = document.createElement("div");
     staticAdDiv.className = "static-ad-widget";
     staticAdDiv.innerHTML = `
-      <div
+      <a href="/blog/rychla-pozicka-do-500-eur.html">
         style="
           border: 1px solid #ddd;
           padding: 15px;
           margin: 30px 0;
           border-radius: 8px;
           background-color: white;
+          dispay: block;
+          text-decoration: none;
         "
       >
         📌<strong>Odporúčame na prečítanie:</strong><br />
-        <a
-          href="/blog/rychla-pozicka-do-500-eur.html"
-          style="font-weight: bold; color: #007b7f"
+        <p
+          style="font-weight: bold; color: #007b7f; margin-top: 8px"
         >
           Rýchla pôžička do 500 eur – ako funguje a kto ju môže získať?
-        </a>
+        </p>
         <p style="margin-top: 5px; font-size: 14px; color: #555">
           Zistite, kto má nárok a aké sú výhody tejto formy rýchleho
           financovania.
         </p>
-      </div>`;
+      </a>`;
     return staticAdDiv;
   }
 
