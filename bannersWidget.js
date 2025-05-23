@@ -60,6 +60,7 @@ function renderBanners(companies) {
           background-color: white;
           display: block;
           text-decoration: none;
+          cursor: pointer;
         ">
       
         📌<strong>Odporúčame na prečítanie:</strong><br />
