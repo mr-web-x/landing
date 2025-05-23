@@ -2,13 +2,18 @@ import os
 from bs4 import BeautifulSoup
 from collections import defaultdict
 import re
+from datetime import datetime
+import xml.etree.ElementTree as ET
 
 BLOG_DIR = "blog"
 INDEX_FILE = "index.html"
 ACCORDION_ID = "blog-list"
 BLOG_SECTION_ID = "blog"
+SITEMAP_FILE = "sitemap.xml"
+SITE_URL = "https://fastcredit.sk"
 
 def extract_section_content(html_content, section_id):
+    """Извлекает содержимое секции по её ID"""
     soup = BeautifulSoup(html_content, "html.parser")
     section = soup.find("section", {"id": section_id})
     return str(section).strip() if section else ""
@@ -189,6 +194,89 @@ def update_index_blog_section():
         print(f"❌ Ошибка при обновлении index.html: {e}")
         return False
 
+def update_sitemap():
+    """Обновляет sitemap.xml, добавляя новые статьи"""
+    try:
+        # Регистрируем namespace для корректной работы с XML
+        ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+        ET.register_namespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        
+        # Парсим существующий sitemap
+        tree = ET.parse(SITEMAP_FILE)
+        root = tree.getroot()
+        
+        # Получаем namespace
+        ns = {'': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        
+        # Собираем существующие URL из sitemap
+        existing_urls = set()
+        for url in root.findall('url', ns):
+            loc = url.find('loc', ns)
+            if loc is not None and loc.text:
+                existing_urls.add(loc.text.strip())
+        
+        # Получаем текущую дату в формате ISO
+        current_date = datetime.now().strftime('%Y-%m-%dT%H:%M:%S+00:00')
+        
+        # Проверяем все статьи в папке blog
+        new_articles_count = 0
+        
+        for filename in sorted(os.listdir(BLOG_DIR)):
+            if filename.endswith(".html") and not filename.startswith("ПРИМЕР"):
+                article_url = f"{SITE_URL}/blog/{filename}"
+                
+                # Если URL еще нет в sitemap, добавляем
+                if article_url not in existing_urls:
+                    # Создаем новый элемент url
+                    url_elem = ET.SubElement(root, 'url')
+                    
+                    loc_elem = ET.SubElement(url_elem, 'loc')
+                    loc_elem.text = f" {article_url}"  # Добавляем пробел в начале как в примере
+                    
+                    lastmod_elem = ET.SubElement(url_elem, 'lastmod')
+                    lastmod_elem.text = current_date
+                    
+                    priority_elem = ET.SubElement(url_elem, 'priority')
+                    priority_elem.text = '0.80'
+                    
+                    new_articles_count += 1
+                    print(f"➕ Добавлена новая статья в sitemap: {filename}")
+        
+        if new_articles_count > 0:
+            # Форматируем XML с отступами
+            indent_xml(root)
+            
+            # Сохраняем обновленный sitemap
+            tree.write(SITEMAP_FILE, encoding='UTF-8', xml_declaration=True)
+            print(f"✅ Sitemap обновлен! Добавлено новых URL: {new_articles_count}")
+        else:
+            print("ℹ️ Новых статей для добавления в sitemap не найдено")
+        
+        return True
+        
+    except FileNotFoundError:
+        print(f"❌ Файл {SITEMAP_FILE} не найден")
+        return False
+    except Exception as e:
+        print(f"❌ Ошибка при обновлении sitemap: {e}")
+        return False
+
+def indent_xml(elem, level=0):
+    """Добавляет отступы для красивого форматирования XML"""
+    i = "\n" + level * "  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for child in elem:
+            indent_xml(child, level + 1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
 if __name__ == "__main__":
     print("="*50)
     print("🚀 Запуск синхронизатора блога")
@@ -207,5 +295,10 @@ if __name__ == "__main__":
     print("\n📋 Этап 2: Обновление слайдера блога в index.html...")
     if update_index_blog_section():
         print("🎉 Главная страница успешно обновлена!")
+    
+    # Этап 3: Обновление sitemap.xml
+    print("\n📋 Этап 3: Обновление sitemap.xml...")
+    if update_sitemap():
+        print("🗺️ Карта сайта успешно обновлена!")
     
     print("\n✨ Синхронизация завершена!")

@@ -1,103 +1,103 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-  <loc>https://fastcredit.sk/</loc>
-  <lastmod>2025-05-06T10:32:20+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/game.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/vyber-uveru-sk.html</loc>
-  <lastmod>2025-05-06T10:32:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/mikropozicky-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/kontrola-uverovej-historie.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/co-robit-ak-vam-zamietli-uver.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/banka-vs-mikropozicky.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/splatky-vs-uver.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/podnikatelske-uvery-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/ako-vyhodne-refinancovat-uver-a-znizit-uroky.html</loc>
-  <lastmod>2025-05-06T10:32:22+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/ako-rychlo-ziskat-peniaze-na-uver-bez-zbytocnych-dokladov.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/ako-bezpecne-brat-online-pozicky-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/ako-ziskat-auto-uver-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fastcredit.sk/blog/hypoteka-najlepsi-urok-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/blog/studentske-pozicky-na-vzdelanie.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/blog/spotrebny-uver-vs-kreditna-karta.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/blog/rychla-pozicka-do-500-eur.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/blog/financovanie-pre-podnikanie-na-slovensku.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc> https://fastcredit.sk/blog/ako-vypocitat-uverove-zatazenie.html</loc>
-  <lastmod>2025-05-06T10:32:23+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-</urlset>
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://fastcredit.sk/</loc>
+    <lastmod>2025-05-06T10:32:20+00:00</lastmod>
+    <priority>1.00</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/game.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/vyber-uveru-sk.html</loc>
+    <lastmod>2025-05-06T10:32:21+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/mikropozicky-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:21+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/kontrola-uverovej-historie.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/co-robit-ak-vam-zamietli-uver.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/banka-vs-mikropozicky.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/splatky-vs-uver.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/podnikatelske-uvery-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/ako-vyhodne-refinancovat-uver-a-znizit-uroky.html</loc>
+    <lastmod>2025-05-06T10:32:22+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/ako-rychlo-ziskat-peniaze-na-uver-bez-zbytocnych-dokladov.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/ako-bezpecne-brat-online-pozicky-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/ako-ziskat-auto-uver-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc>https://fastcredit.sk/blog/hypoteka-najlepsi-urok-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/studentske-pozicky-na-vzdelanie.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/spotrebny-uver-vs-kreditna-karta.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/rychla-pozicka-do-500-eur.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/financovanie-pre-podnikanie-na-slovensku.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/ako-vypocitat-uverove-zatazenie.html</loc>
+    <lastmod>2025-05-06T10:32:23+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  <url>
+    <loc> https://fastcredit.sk/blog/ako-sa-vyhnut-dlhovej-pasci-pri-uvere.html</loc>
+    <lastmod>2025-05-23T10:30:38+00:00</lastmod>
+    <priority>0.80</priority>
+    </url>
+  </urlset>
