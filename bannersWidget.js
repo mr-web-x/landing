@@ -99,13 +99,12 @@ function renderBanners(companies) {
 
     // Индексы после которых вставлять баннеры
     let insertAfter1 = part * 2 - 1;
+    let insertMiddle = part * 3 - 1;
     let insertAfter2 = part * 4 - 1;
 
     if (headings[insertAfter1]) {
-      headings[insertAfter1 - 1].before(
-        createBanner(companies[randomNumbers[0]])
-      );
-      headings[insertAfter1].before(createStaticAd());
+      headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
+      headings[insertMiddle].before(createStaticAd());
     }
     if (headings[insertAfter2]) {
       headings[insertAfter2].before(createBanner(companies[randomNumbers[1]]));
