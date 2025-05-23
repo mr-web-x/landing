@@ -52,8 +52,7 @@ function renderBanners(companies) {
     const staticAdDiv = document.createElement("div");
     staticAdDiv.className = "static-ad-widget";
     staticAdDiv.innerHTML = `
-      <a href="/blog/rychla-pozicka-do-500-eur.html">
-        style="
+      <a href="/blog/rychla-pozicka-do-500-eur.html" style="
           border: 1px solid #ddd;
           padding: 15px;
           margin: 30px 0;
@@ -61,8 +60,8 @@ function renderBanners(companies) {
           background-color: white;
           dispay: block;
           text-decoration: none;
-        "
-      >
+        ">
+      
         📌<strong>Odporúčame na prečítanie:</strong><br />
         <p
           style="font-weight: bold; color: #007b7f; margin-top: 8px"
