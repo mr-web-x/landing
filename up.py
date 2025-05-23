@@ -15,6 +15,13 @@ def extract_section_content(html_content, section_id):
 
 def extract_article_info(filepath):
     """Извлекает информацию о статье из HTML файла"""
+    # Получаем имя файла
+    filename = os.path.basename(filepath)
+    
+    # Пропускаем файлы, начинающиеся с "ПРИМЕР"
+    if filename.startswith("ПРИМЕР"):
+        return None
+    
     with open(filepath, "r", encoding="utf-8") as file:
         soup = BeautifulSoup(file, "html.parser")
         
@@ -22,9 +29,13 @@ def extract_article_info(filepath):
         h1 = soup.find("h1")
         title = h1.text.strip() if h1 else ""
         
-        # Пропускаем статьи, начинающиеся с "ПРИМЕР"
-        if title.startswith("ПРИМЕР"):
-            return None
+        # Если h1 пустой, берем из title
+        if not title:
+            title_tag = soup.find("title")
+            if title_tag:
+                title = title_tag.text.strip()
+                # Убираем суффикс сайта если есть
+                title = title.split(" | ")[0].strip()
             
         # Извлекаем описание (первый параграф после h1 или meta description)
         meta_desc = soup.find("meta", {"name": "description"})
@@ -38,9 +49,6 @@ def extract_article_info(filepath):
                 next_p = h1.find_next_sibling("p")
                 if next_p:
                     description = next_p.text.strip()[:200] + "..." if len(next_p.text) > 200 else next_p.text.strip()
-        
-        # Получаем имя файла
-        filename = os.path.basename(filepath)
         
         return {
             "title": title,
@@ -145,7 +153,7 @@ def update_index_blog_section():
         if filename.endswith(".html"):
             path = os.path.join(BLOG_DIR, filename)
             article_info = extract_article_info(path)
-            if article_info:  # None если статья начинается с "ПРИМЕР"
+            if article_info:  # None если файл начинается с "ПРИМЕР"
                 articles.append(article_info)
     
     if not articles:
