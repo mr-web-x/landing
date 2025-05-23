@@ -51,6 +51,7 @@ function renderBanners(companies) {
   function createStaticAd() {
     const staticAdDiv = document.createElement("div");
     staticAdDiv.className = "static-ad-widget";
+    staticAdDiv.style.cursor = "pointer";
     staticAdDiv.innerHTML = `
       <a href="/blog/rychla-pozicka-do-500-eur.html" style="
           border: 1px solid #ddd;
@@ -60,7 +61,6 @@ function renderBanners(companies) {
           background-color: white;
           display: block;
           text-decoration: none;
-          cursor: pointer;
         ">
       
         📌<strong>Odporúčame na prečítanie:</strong><br />
