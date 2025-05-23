@@ -88,7 +88,7 @@ function renderBanners(companies) {
   }
 
   if (count === 3) {
-    headings[1].before(createBanner(companies[randomNumbers[0]]));
+    headings[0].before(createBanner(companies[randomNumbers[0]]));
     headings[1].before(createStaticAd());
     headings[2].before(createBanner(companies[randomNumbers[1]]));
   }
@@ -102,7 +102,9 @@ function renderBanners(companies) {
     let insertAfter2 = part * 4 - 1;
 
     if (headings[insertAfter1]) {
-      headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
+      headings[insertAfter1 - 1].before(
+        createBanner(companies[randomNumbers[0]])
+      );
       headings[insertAfter1].before(createStaticAd());
     }
     if (headings[insertAfter2]) {
