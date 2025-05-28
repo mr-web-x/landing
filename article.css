@@ -15,6 +15,16 @@
   margin: 80px auto;
 }
 
+.article-content table {
+  border-collapse: collapse;
+  margin: 8px 0;
+}
+
+.article-content table td {
+  border: 1px solid black;
+  padding: 4px 8px;
+}
+
 .article-hero__title {
   position: absolute;
   left: 50%;
