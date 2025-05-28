@@ -96,12 +96,12 @@ function renderBanners(companies) {
 
   // Если больше 3 заголовков — делим на 4 части и вставляем баннеры с статичной рекламой между ними
   if (count > 3) {
-    let part = Math.round(count / 4.1);
+    let part = Math.floor(count / 3);
 
     // Индексы после которых вставлять баннеры
-    let insertAfter1 = part * 2 - 2;
-    let insertMiddle = part * 3 - 2;
-    let insertAfter2 = part * 4 - 2;
+    let insertAfter1 = part;
+    let insertMiddle = part * 2;
+    let insertAfter2 = part * 3;
 
     if (headings[insertAfter1]) {
       headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
