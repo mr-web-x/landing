@@ -99,9 +99,9 @@ function renderBanners(companies) {
     let part = Math.floor(count / 4);
 
     // Индексы после которых вставлять баннеры
-    let insertAfter1 = part * 2;
-    let insertMiddle = part * 3;
-    let insertAfter2 = part * 4;
+    let insertAfter1 = part * 2 - 2;
+    let insertMiddle = part * 3 - 2;
+    let insertAfter2 = part * 4 - 2;
 
     if (headings[insertAfter1]) {
       headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
