@@ -1,0 +1,48 @@
+.contacts {
+  margin: 0;
+  padding: 60px 0;
+  min-height: calc(100vh - 182px);
+}
+
+.contacts__wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.contacts h1 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.contacts__part-map {
+  flex-shrink: 0;
+  flex: 1;
+}
+
+.contacts__part-map iframe {
+  width: 100%;
+}
+.contacts span {
+  display: block;
+  color: rgb(0, 0, 0);
+  margin-bottom: 8px;
+}
+
+.contacts a {
+  font-weight: 700;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 15px;
+  display: block;
+}
+
+@media all and (max-width: 768px) {
+  .contacts__wrapper {
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 40px;
+  }
+}
