@@ -71,6 +71,17 @@
 .special-link:hover {
   color: blue;
 }
+.article-content-policy {
+  max-width: 900px;
+  margin: 80px auto;
+}
+
+.article-content-policy h2 {
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
 
 .article-content-policy .policy__wrapper {
   display: flex;
