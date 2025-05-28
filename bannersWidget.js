@@ -94,23 +94,69 @@ function renderBanners(companies) {
     headings[2].before(createBanner(companies[randomNumbers[1]]));
   }
 
-  // Если больше 3 заголовков — делим на 4 части и вставляем баннеры с статичной рекламой между ними
   if (count > 3) {
-    let part = Math.floor(count / 3);
+    switch (count) {
+      case 4:
+        headings[4].before(createBanner(companies[randomNumbers[0]]));
+        headings[3].before(createStaticAd());
+        headings[2].before(createBanner(companies[randomNumbers[1]]));
+        break;
 
-    // Индексы после которых вставлять баннеры
-    let insertAfter1 = part;
-    let insertMiddle = part * 2;
-    let insertAfter2 = part * 3;
+      case 5:
+        headings[4].before(createBanner(companies[randomNumbers[0]]));
+        headings[2].before(createStaticAd());
+        headings[1].before(createBanner(companies[randomNumbers[1]]));
+        break;
 
-    if (headings[insertAfter1]) {
-      headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
-      headings[insertMiddle].before(createStaticAd());
-    }
-    if (headings[insertAfter2]) {
-      headings[insertAfter2].before(createBanner(companies[randomNumbers[1]]));
+      case 6:
+        headings[5].before(createBanner(companies[randomNumbers[0]]));
+        headings[3].before(createStaticAd());
+        headings[1].before(createBanner(companies[randomNumbers[1]]));
+        break;
+
+      case 7:
+        headings[6].before(createBanner(companies[randomNumbers[0]]));
+        headings[3].before(createStaticAd());
+        headings[1].before(createBanner(companies[randomNumbers[1]]));
+        break;
+
+      case 8:
+        headings[6].before(createBanner(companies[randomNumbers[0]]));
+        headings[4].before(createStaticAd());
+        headings[2].before(createBanner(companies[randomNumbers[1]]));
+        break;
+
+      default:
+        // Универсальный случай для большого числа заголовков — можно адаптировать
+        const partSize = Math.floor(count / 4);
+        const index1 = Math.min(count - 1, partSize * 3);
+        const index2 = Math.min(count - 1, partSize * 2);
+        const index3 = Math.min(count - 1, partSize * 1);
+
+        headings[index1].before(createBanner(companies[randomNumbers[0]]));
+        headings[index2].before(createStaticAd());
+        headings[index3].before(createBanner(companies[randomNumbers[1]]));
+        break;
     }
   }
+
+  // Если больше 3 заголовков — делим на 4 части и вставляем баннеры с статичной рекламой между ними
+  // if (count > 3) {
+  //   let part = Math.floor(count / 4);
+
+  //   // Индексы после которых вставлять баннеры
+  //   let insertAfter1 = part;
+  //   let insertMiddle = part * 2;
+  //   let insertAfter2 = part * 3;
+
+  //   if (headings[insertAfter1]) {
+  //     headings[insertAfter1].before(createBanner(companies[randomNumbers[0]]));
+  //     headings[insertMiddle].before(createStaticAd());
+  //   }
+  //   if (headings[insertAfter2]) {
+  //     headings[insertAfter2].before(createBanner(companies[randomNumbers[1]]));
+  //   }
+  // }
 }
 
 function getUniqueRandomNumbers(min, max, count) {
