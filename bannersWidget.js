@@ -96,7 +96,7 @@ function renderBanners(companies) {
 
   // Если больше 3 заголовков — делим на 4 части и вставляем баннеры с статичной рекламой между ними
   if (count > 3) {
-    let part = Math.floor(count / 4);
+    let part = Math.round(count / 4.1);
 
     // Индексы после которых вставлять баннеры
     let insertAfter1 = part * 2 - 2;
