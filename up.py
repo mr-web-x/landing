@@ -400,18 +400,22 @@ def update_typy_poziciek_page_section():
         return False
 
 def update_sitemap():
-    """Обновляет sitemap.xml, добавляя новые статьи из обеих папок"""
+    """Обновляет sitemap.xml, добавляя новые статьи из обеих папок с hreflang атрибутами"""
     try:
         # Регистрируем namespace для корректной работы с XML
         ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
         ET.register_namespace('xsi', 'http://www.w3.org/2001/XMLSchema-instance')
+        ET.register_namespace('xhtml', 'http://www.w3.org/1999/xhtml')
         
         # Парсим существующий sitemap
         tree = ET.parse(SITEMAP_FILE)
         root = tree.getroot()
         
         # Получаем namespace
-        ns = {'': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        ns = {
+            '': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+            'xhtml': 'http://www.w3.org/1999/xhtml'
+        }
         
         # Собираем существующие URL из sitemap
         existing_urls = set()
@@ -434,14 +438,28 @@ def update_sitemap():
                     if article_url not in existing_urls:
                         url_elem = ET.SubElement(root, 'url')
                         
+                        # Основной URL
                         loc_elem = ET.SubElement(url_elem, 'loc')
-                        loc_elem.text = f" {article_url}"
+                        loc_elem.text = article_url
                         
+                        # Дата последнего изменения
                         lastmod_elem = ET.SubElement(url_elem, 'lastmod')
                         lastmod_elem.text = current_date
                         
+                        # Приоритет
                         priority_elem = ET.SubElement(url_elem, 'priority')
                         priority_elem.text = '0.80'
+                        
+                        # Добавляем hreflang атрибуты для словацкого языка
+                        hreflang_sk = ET.SubElement(url_elem, '{http://www.w3.org/1999/xhtml}link')
+                        hreflang_sk.set('rel', 'alternate')
+                        hreflang_sk.set('hreflang', 'sk')
+                        hreflang_sk.set('href', article_url)
+                        
+                        hreflang_sk_SK = ET.SubElement(url_elem, '{http://www.w3.org/1999/xhtml}link')
+                        hreflang_sk_SK.set('rel', 'alternate')
+                        hreflang_sk_SK.set('hreflang', 'sk-SK')
+                        hreflang_sk_SK.set('href', article_url)
                         
                         new_articles_count += 1
                         print(f"➕ Добавлена новая статья в sitemap: blog/{filename}")
@@ -455,19 +473,37 @@ def update_sitemap():
                     if article_url not in existing_urls:
                         url_elem = ET.SubElement(root, 'url')
                         
+                        # Основной URL
                         loc_elem = ET.SubElement(url_elem, 'loc')
-                        loc_elem.text = f" {article_url}"
+                        loc_elem.text = article_url
                         
+                        # Дата последнего изменения
                         lastmod_elem = ET.SubElement(url_elem, 'lastmod')
                         lastmod_elem.text = current_date
                         
+                        # Приоритет
                         priority_elem = ET.SubElement(url_elem, 'priority')
                         priority_elem.text = '0.80'
+                        
+                        # Добавляем hreflang атрибуты для словацкого языка
+                        hreflang_sk = ET.SubElement(url_elem, '{http://www.w3.org/1999/xhtml}link')
+                        hreflang_sk.set('rel', 'alternate')
+                        hreflang_sk.set('hreflang', 'sk')
+                        hreflang_sk.set('href', article_url)
+                        
+                        hreflang_sk_SK = ET.SubElement(url_elem, '{http://www.w3.org/1999/xhtml}link')
+                        hreflang_sk_SK.set('rel', 'alternate')
+                        hreflang_sk_SK.set('hreflang', 'sk-SK')
+                        hreflang_sk_SK.set('href', article_url)
                         
                         new_articles_count += 1
                         print(f"➕ Добавлена новая статья в sitemap: typy-poziciek/{filename}")
         
         if new_articles_count > 0:
+            # Обновляем корневой элемент с необходимыми атрибутами
+            root.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+            root.set('xmlns:xhtml', 'http://www.w3.org/1999/xhtml')
+            
             # Форматируем XML с отступами
             indent_xml(root)
             
@@ -485,7 +521,7 @@ def update_sitemap():
     except Exception as e:
         print(f"❌ Ошибка при обновлении sitemap: {e}")
         return False
-
+        
 def indent_xml(elem, level=0):
     """Добавляет отступы для красивого форматирования XML"""
     i = "\n" + level * "  "

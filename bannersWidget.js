@@ -24,7 +24,7 @@ function renderBanners(companies) {
 					<div class="banner-widget__card-item banner-widget__card-center">
 						<img src="/assets/companies/${company.logo}" alt="${
       company.companyName
-    }" width="217px" height="73px">
+    }" width="217px" height="73px" loading="lazy">
 					</div>
 					<div class="banner-widget__card-item">
 						<span>Úroková sadzba</span>
