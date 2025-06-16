@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://forze.space/sitemap.xml
+Sitemap: https://fastcredit.sk/sitemap.xml
