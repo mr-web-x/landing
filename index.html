@@ -54,9 +54,14 @@
       onload="this.onload=null;this.rel='stylesheet'"
     />
 
-    <link rel="stylesheet" href="./style.css" />
-    <!-- <link href="./style.css" rel="stylesheet" /> -->
-    <link href="/home.css" rel="stylesheet" />
+    <link href="./style.css" rel="stylesheet" />
+    <!-- <link href="/home.css" rel="stylesheet" /> -->
+    <link
+      rel="preload"
+      href="./home.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <!-- <link href="./animation/aos.css" rel="stylesheet" /> -->
     <!-- <meta content="Zoznam spoločností, ktoré poskytujú mini pôžičky na Slovensku." property="og:title"/> -->
     <meta
@@ -462,6 +467,35 @@
       });
     </script>
     <!-- End Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
+    <style>
+      .hero {
+        background: url("/assets/images/hero1.webp") 0 0 / cover no-repeat;
+        margin: 0;
+      }
+
+      .hero__wrapper {
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 0;
+      }
+
+      .hero__wrapper h1 {
+        font-size: 44px;
+        color: white;
+      }
+
+      .hero__wrapper p {
+        margin: 20px 0;
+        font-size: 18px;
+        color: white;
+      }
+
+      .hero__wrapper .btn {
+        width: fit-content;
+      }
+    </style>
   </head>
   <body>
     <noscript>
