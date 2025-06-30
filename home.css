@@ -1,5 +1,5 @@
 .hero {
-  background: url("/assets/images/hero1.png") 0 0 / cover no-repeat;
+  background: url("/assets/images/hero1.webp") 0 0 / cover no-repeat;
   margin: 0;
 }
 
@@ -40,6 +40,7 @@
 .companies h2 img {
   width: 60px;
   height: 60px;
+  object-fit: contain;
 }
 
 .companies form {
@@ -130,6 +131,7 @@
   .companies h2 img {
     width: 100px;
     height: 100px;
+    object-fit: contain;
   }
   .companies__list {
     flex-direction: row;
