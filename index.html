@@ -34,17 +34,32 @@
       name="keywords"
     />
     <meta content="Fastcredit" name="author" />
-    <meta content="index, follow" name="robots" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <link href="https://fastcredit.sk/" rel="canonical" />
     <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
     <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
     <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
     <link href="/site.webmanifest" rel="manifest" />
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
       rel="stylesheet"
+    /> -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <link
+      rel="preload"
+      href="./style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <!-- <link href="./style.css" rel="stylesheet" /> -->
     <link href="/home.css" rel="stylesheet" />
     <!-- <link href="./animation/aos.css" rel="stylesheet" /> -->
@@ -74,19 +89,278 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "FinancialService",
-        "name": "FastCredit.sk",
-        "description": "Porovnanie najlepších pôžičiek a úverov na Slovensku",
-        "url": "https://fastcredit.sk",
-        "areaServed": {
-          "@type": "Country",
-          "name": "Slovakia"
-        },
-        "serviceType": "Loan comparison",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "SK"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://fastcredit.sk/#website",
+            "url": "https://fastcredit.sk/",
+            "name": "FastCredit.sk",
+            "description": "Porovnanie najlepších pôžičiek a úverov na Slovensku",
+            "inLanguage": "sk-SK",
+            "publisher": {
+              "@id": "https://fastcredit.sk/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://fastcredit.sk/?s={search_term_string}"
+              },
+              "query-input": {
+                "@type": "PropertyValueSpecification",
+                "valueRequired": true,
+                "valueName": "search_term_string"
+              }
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://fastcredit.sk/#organization",
+            "name": "FastCredit.sk",
+            "url": "https://fastcredit.sk/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://fastcredit.sk/assets/icons/logo.svg",
+              "width": 200,
+              "height": 50
+            },
+            "description": "Nezávislý porovnávací portál finančných služieb na Slovensku",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "SK",
+              "addressRegion": "Slovakia"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Slovakia"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "availableLanguage": "Slovak",
+              "url": "https://fastcredit.sk/kontakty.html"
+            },
+            "sameAs": [
+              "https://fastcredit.sk/blog.html",
+              "https://fastcredit.sk/caste-otazky.html"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://fastcredit.sk/#webpage",
+            "url": "https://fastcredit.sk/",
+            "name": "Rýchla pôžička online do 1000€ - porovnanie najlepších úverov na Slovensku | FastCredit.sk",
+            "description": "Rýchla pôžička online na Slovensku do 1000€ ✓ Schválenie do 1 hodiny ✓ Bez zbytočných dokladov ✓ Porovnajte najlepšie úvery od overených poskytovateľov",
+            "inLanguage": "sk-SK",
+            "isPartOf": {
+              "@id": "https://fastcredit.sk/#website"
+            },
+            "about": {
+              "@id": "https://fastcredit.sk/#organization"
+            },
+            "datePublished": "2024-01-01T00:00:00+01:00",
+            "dateModified": "2025-06-30T12:00:00+01:00",
+            "primaryImageOfPage": {
+              "@id": "https://fastcredit.sk/#primaryimage"
+            },
+            "breadcrumb": {
+              "@id": "https://fastcredit.sk/#breadcrumb"
+            },
+            "mainEntity": {
+              "@id": "https://fastcredit.sk/#financialservice"
+            }
+          },
+          {
+            "@type": "FinancialService",
+            "@id": "https://fastcredit.sk/#financialservice",
+            "name": "Porovnanie pôžičiek a úverov",
+            "description": "Komplexné porovnanie finančných produktov na Slovensku - mikropôžičky, spotrebiteľské úvery, kreditné karty",
+            "provider": {
+              "@id": "https://fastcredit.sk/#organization"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Slovakia"
+            },
+            "serviceType": [
+              "Loan comparison",
+              "Financial advisory",
+              "Credit comparison"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Katalóg finančných produktov",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "LoanOrCredit",
+                    "name": "Mikropôžičky do 1000€",
+                    "description": "Rýchle pôžičky do 1000€ s schválením do 1 hodiny",
+                    "amount": {
+                      "@type": "MonetaryAmount",
+                      "currency": "EUR",
+                      "maxValue": 1000
+                    }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "LoanOrCredit",
+                    "name": "Spotrebiteľské úvery",
+                    "description": "Úvery na spotrebné účely od 500€ do 50000€",
+                    "amount": {
+                      "@type": "MonetaryAmount",
+                      "currency": "EUR",
+                      "minValue": 500,
+                      "maxValue": 50000
+                    }
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "PaymentCard",
+                    "name": "Kreditné karty",
+                    "description": "Porovnanie kreditných kariet s rôznymi podmienkami"
+                  }
+                }
+              ]
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "name": "Finančné produkty na Slovensku",
+              "offerCount": "50+",
+              "lowPrice": "0",
+              "highPrice": "50000",
+              "priceCurrency": "EUR"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://fastcredit.sk/#primaryimage",
+            "url": "https://fastcredit.sk/og.jpg",
+            "contentUrl": "https://fastcredit.sk/og.jpg",
+            "width": 1200,
+            "height": 630,
+            "caption": "FastCredit.sk - Porovnanie pôžičiek na Slovensku"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://fastcredit.sk/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Hlavná stránka",
+                "item": "https://fastcredit.sk/"
+              }
+            ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://fastcredit.sk/#loanproviders",
+            "name": "Zoznam poskytovateľov pôžičiek",
+            "description": "Kompletný zoznam overených poskytovateľov pôžičiek na Slovensku",
+            "mainEntity": {
+              "@type": "ItemList",
+              "name": "Finančné spoločnosti",
+              "description": "Overení poskytovatelia úverov a pôžičiek na Slovensku",
+              "numberOfItems": "20+"
+            }
+          },
+          {
+            "@type": "Blog",
+            "@id": "https://fastcredit.sk/#blog",
+            "url": "https://fastcredit.sk/blog.html",
+            "name": "FastCredit Blog",
+            "description": "Finančné rady, tipy a návody pre správu osobných financií",
+            "inLanguage": "sk-SK",
+            "publisher": {
+              "@id": "https://fastcredit.sk/#organization"
+            },
+            "about": [
+              "Finančné poradenstvo",
+              "Úverové produkty",
+              "Osobné financie",
+              "Mikropôžičky"
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://fastcredit.sk/#faq",
+            "url": "https://fastcredit.sk/caste-otazky.html",
+            "name": "Často kladené otázky",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Ako rýchlo môžem získať pôžičku?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pôžičku môžete získať do 1 hodiny po schválení žiadosti. Náš portál vám pomôže nájsť najrýchlejšie finančné riešenia na Slovensku."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Aká je maximálna suma pôžičky?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Môžete získať pôžičku až do 1000€ prostredníctvom spoločností, ktoré porovnávame na našom portáli."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Je FastCredit.sk finančná inštitúcia?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nie, FastCredit.sk nie je finančná inštitúcia. Sme nezávislý porovnávací portál, ktorý pomáha používateľom nájsť a analyzovať dostupné možnosti financovania na Slovensku."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "Service",
+            "@id": "https://fastcredit.sk/#comparisonservice",
+            "name": "Porovnávacia služba",
+            "description": "Bezplatné porovnanie finančných produktov a služieb",
+            "provider": {
+              "@id": "https://fastcredit.sk/#organization"
+            },
+            "serviceType": "Financial comparison service",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Slovakia"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR",
+              "description": "Bezplatná porovnávacia služba"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Porovnávacie služby",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Porovnanie úrokových sadzieb",
+                  "description": "Detailné porovnanie úrokových sadzieb od rôznych poskytovateľov"
+                },
+                {
+                  "@type": "Service",
+                  "name": "Analýza podmienok",
+                  "description": "Podrobná analýza podmienok a poplatkov finančných produktov"
+                },
+                {
+                  "@type": "Service",
+                  "name": "Finančné poradenstvo",
+                  "description": "Bezplatné články a rady o osobných financiách"
+                }
+              ]
+            }
+          }
+        ]
       }
     </script>
     <!-- <script type="application/ld+json">
@@ -195,6 +469,12 @@
     <!-- End Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
   </head>
   <body>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      />
+    </noscript>
     <header id="home">
       <div class="container">
         <div class="row">
