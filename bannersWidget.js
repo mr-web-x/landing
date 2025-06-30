@@ -187,7 +187,7 @@ function injectBannerStyles() {
   style.id = "banner-widget-styles";
   style.innerHTML = `
 .banner-widget__card-item span {
-  color: #898989;
+  color: #4c4c4c;
   font-size: 14px;
 }
 

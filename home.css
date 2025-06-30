@@ -80,8 +80,10 @@
   gap: 10px;
 }
 
+/* color: #898989 */
+
 .companies__card-item span {
-  color: #898989;
+  color: #4c4c4c;
   font-size: 18px;
 }
 
