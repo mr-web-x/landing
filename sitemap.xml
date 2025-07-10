@@ -23,6 +23,13 @@
     <xhtml:link rel="alternate" hreflang="sk-SK" href="https://fastcredit.sk/game.html" />
   </url>
   <url>
+    <loc>https://fastcredit.sk/slovnik.html</loc>
+    <lastmod>2025-06-16T12:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://fastcredit.sk/slovnik.html" />
+    <xhtml:link rel="alternate" hreflang="sk-SK" href="https://fastcredit.sk/slovnik.html" />
+  </url>
+  <url>
     <loc>https://fastcredit.sk/blog.html</loc>
     <lastmod>2025-06-16T12:00:00+00:00</lastmod>
     <priority>0.80</priority>
