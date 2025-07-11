@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const dictionarySection = document.querySelector(".dictionary-links");
   const allItems = dictionarySection.querySelectorAll("li");
-  const itemsPerLoad = 20;
+  const itemsPerLoad = 10;
   let currentlyShown = 0;
 
   // Создаем контейнер с сеткой
