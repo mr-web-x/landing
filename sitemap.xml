@@ -3,7 +3,8 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://fastcredit.sk/</loc>
-    <lastmod>2025-06-16T12:00:00+00:00</lastmod>
+    <lastmod>2025-07-15T06:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.00</priority>
     <xhtml:link rel="alternate" hreflang="sk" href="https://fastcredit.sk/" />
     <xhtml:link rel="alternate" hreflang="sk-SK" href="https://fastcredit.sk/" />
@@ -24,7 +25,7 @@
   </url>
   <url>
     <loc>https://fastcredit.sk/slovnik.html</loc>
-    <lastmod>2025-06-16T12:00:00+00:00</lastmod>
+    <lastmod>2025-07-15T06:15:00+00:00</lastmod>
     <priority>0.80</priority>
     <xhtml:link rel="alternate" hreflang="sk" href="https://fastcredit.sk/slovnik.html" />
     <xhtml:link rel="alternate" hreflang="sk-SK" href="https://fastcredit.sk/slovnik.html" />
