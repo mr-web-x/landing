@@ -15,6 +15,15 @@
   margin: 80px auto;
 }
 
+.article-content a {
+  color: #3e3ceb;
+  text-decoration: underline;
+}
+
+.article-content a:hover {
+  color: #1311b3;
+}
+
 .article-content table {
   border-collapse: collapse;
   margin: 8px 0;
